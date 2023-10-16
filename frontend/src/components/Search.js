@@ -10,6 +10,9 @@ import {
 
 import { foodInfo } from '../data/foodsaver.js';
 
+import SearchIcon from '@mui/icons-material/Search';
+import Card from '@mui/material/Card';
+
 const Search = () => {
 	const [timesPressed, setTimesPressed] = useState(0);
 
@@ -71,13 +74,13 @@ const Search = () => {
 				<Pressable
 					style={styles.button}
 					onPress={handleSubmit}>
-					<Text>Search</Text>
+					<SearchIcon />
 				</Pressable>
 			</div>
 			<ScrollView style={styles.content}>
 				{result.map((item) => (
-					<div
-						style={styles.card}
+					<Card
+						variant='outlined'
 						key={item[0]?.ID}>
 						<h1>
 							{item[0]?.ID} - {item[2]?.Name}
@@ -103,7 +106,7 @@ const Search = () => {
 							<br />
 							{item[33]?.Freeze_Tips}
 						</span>
-					</div>
+					</Card>
 				))}
 			</ScrollView>
 		</View>
@@ -130,20 +133,21 @@ const styles = StyleSheet.create({
 		padding: '1em',
 	},
 	input: {
-		height: 40,
 		width: '30rem',
 		margin: 12,
 		borderWidth: 1,
 		padding: 10,
-		borderRadius: 20,
+		borderRadius: 50,
 	},
 	button: {
-		height: 40,
-		width: '5rem',
+		justifyContent: 'center',
+		alignItems: 'center',
+
+		borderColor: 'gray',
 		margin: 12,
 		borderWidth: 1,
 		padding: 10,
-		borderRadius: 20,
+		borderRadius: 50,
 	},
 	card: {
 		margin: 12,
