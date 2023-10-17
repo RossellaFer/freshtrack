@@ -7,8 +7,10 @@ import {
 	Pressable,
 	Dimensions,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
+	const { t } = useTranslation();
 	return (
 		<View style={styles.container}>
 			<View>
@@ -26,7 +28,7 @@ const Home = () => {
 			<Pressable
 				onPress={() => {}}
 				style={buttonStyles.button}>
-				<Text style={buttonStyles.text}>Example button</Text>
+				<Text style={buttonStyles.text}>{t('button')}</Text>
 			</Pressable>
 		</View>
 	);

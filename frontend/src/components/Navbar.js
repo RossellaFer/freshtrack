@@ -7,8 +7,8 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PublicIcon from '@mui/icons-material/Public';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import PersonIcon from '@mui/icons-material/Person';
+import ExploreIcon from '@mui/icons-material/Explore';
 
 const Navbar = () => {
 	const pathname = window.location.pathname; // in case user visits the path directly. The BottomNavBar is able to follow suit.
@@ -26,34 +26,33 @@ const Navbar = () => {
 					onChange={handleChange}
 					showLabels={true}>
 					<BottomNavigationAction
-						label='Home'
-						value='/'
-						icon={<FavoriteIcon />}
-						component={Link}
-						to='/'
-					/>
-
-					<BottomNavigationAction
-						label='Login'
-						value='/login'
-						icon={<PublicIcon />}
-						component={Link}
-						to='/login'
-					/>
-
-					<BottomNavigationAction
-						label='Search'
-						value='/search'
+						label='Lists'
+						value='/lists'
 						icon={<FormatListBulletedIcon />}
 						component={Link}
-						to='/search'
+						to='/lists'
 					/>
+					<BottomNavigationAction
+						label='Impact'
+						value='/impact'
+						icon={<PublicIcon />}
+						component={Link}
+						to='/impact'
+					/>
+					<BottomNavigationAction
+						label='Discover'
+						value='/discover'
+						icon={<ExploreIcon />}
+						component={Link}
+						to='/discover'
+					/>
+
 					<BottomNavigationAction
 						label='Profile'
 						value='/profile'
 						icon={<PersonIcon />}
 						component={Link}
-						to='/'
+						to='/profile'
 					/>
 				</BottomNavigation>
 			</Paper>
