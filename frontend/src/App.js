@@ -3,8 +3,9 @@ import React from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Root from './components/Root.js';
-import Search from './components/Search.js';
-
+import Search from './pages/Search.js';
+import CreateNew from './pages/CreateNew.js';
+import Scanner from './pages/Scanner.js';
 // Add react-router-dom imports
 import {
 	RouterProvider,
@@ -30,6 +31,14 @@ const appRouter = createBrowserRouter(
 			<Route
 				path='/search'
 				element={<Search />}
+			/>
+			<Route
+				path='/createnew'
+				element={<CreateNew />}
+			/>
+			<Route
+				path='/scanner'
+				element={<Scanner />}
 			/>
 		</Route>
 	)

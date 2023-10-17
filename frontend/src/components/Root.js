@@ -1,14 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, SafeAreaView, View, Dimensions } from 'react-native';
 import Navbar from '../components/Navbar';
 
 const Root = () => {
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<Outlet />
 			<Navbar />
-		</View>
+		</SafeAreaView>
 	);
 };
 

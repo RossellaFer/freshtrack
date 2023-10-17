@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -16,7 +17,7 @@ const Navbar = () => {
 		setValue(newValue);
 	};
 	return (
-		<View>
+		<Box style={styles.container}>
 			<Paper
 				sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
 				elevation={3}>
@@ -56,29 +57,13 @@ const Navbar = () => {
 					/>
 				</BottomNavigation>
 			</Paper>
-		</View>
+		</Box>
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
-		display: 'flex',
-		width: '100%',
-		justifyContent: 'center',
-
-		alignItems: 'center',
-		flexDirection: 'row',
-		backgroundColor: 'lightgray',
-	},
-	button: {
-		height: 40,
-		width: '5vw',
-
-		borderWidth: 1,
-		padding: 10,
-
-		justifyContent: 'center',
-		alignItems: 'center',
+		width: '100vw',
 	},
 });
 
