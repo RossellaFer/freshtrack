@@ -9,53 +9,93 @@ import Discover from './pages/Discover.js';
 import Scanner from './pages/Scanner.js';
 import Profile from './pages/Profile.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-const AuthContext = createContext();
-export const AuthData = () => useContext(AuthContext);
+import ProtectedRoute from './contexts/ProtectedRoute';
+import { AuthProvider, useAuth } from './contexts/useAuth';
+import Login from './contexts/Login';
+import Navbar from './components/Navbar';
+// const AuthContext = createContext();
+// export const AuthData = () => useContext(AuthContext);
 
 function App() {
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	// const [isAuthenticated, setIsAuthenticated] = useState(false);
 
 	return (
-		<Router>
-			<AuthContext.Provider value={{ isAuthenticated }}>
-				<Routes>
-					<Route
-						path='/'
-						element={<Root />}>
+		<>
+			<AuthProvider>
+				<Router>
+					{/* <AuthContext.Provider value={{ isAuthenticated }}> */}
+
+					<Routes>
 						<Route
-							index
-							element={<Home />}
-						/>
-						<Route
-							path='/impact'
-							element={<Impact />}
-						/>
-						<Route
-							path='/lists'
-							element={<Search />}
-						/>
-						<Route
-							path='/profile'
-							element={<Profile />}
-						/>
-						<Route
-							path='/createnew'
-							element={<CreateNew />}
-						/>
-						<Route
-							path='/scanner'
-							element={<Scanner />}
-						/>
-						<Route
-							path='/discover'
-							element={<Discover />}
-						/>
-					</Route>
-				</Routes>
-			</AuthContext.Provider>
-		</Router>
+							path='/'
+							element={<Root />}>
+							<Route
+								index
+								element={<Home />}
+							/>
+							<Route
+								path='/home'
+								element={<Home />}
+							/>
+
+							<Route
+								path='/login'
+								element={<Login />}
+							/>
+
+							<Route
+								path='/impact'
+								element={
+									<ProtectedRoute>
+										<Impact />
+									</ProtectedRoute>
+								}
+							/>
+
+							<Route
+								path='/lists'
+								element={
+									<ProtectedRoute>
+										<Search />
+									</ProtectedRoute>
+								}
+							/>
+							<Route
+								path='/profile'
+								element={<Profile />}
+							/>
+							<Route
+								path='/createnew'
+								element={
+									<ProtectedRoute>
+										<CreateNew />
+									</ProtectedRoute>
+								}
+							/>
+							<Route
+								path='/scanner'
+								element={
+									<ProtectedRoute>
+										<Scanner />
+									</ProtectedRoute>
+								}
+							/>
+							<Route
+								path='/discover'
+								element={
+									<ProtectedRoute>
+										<Discover />
+									</ProtectedRoute>
+								}
+							/>
+						</Route>
+					</Routes>
+					{/* </AuthContext.Provider> */}
+				</Router>
+			</AuthProvider>
+		</>
 	);
 }
 
-export { App, AuthContext };
+// export { App, AuthContext };
+export default App;

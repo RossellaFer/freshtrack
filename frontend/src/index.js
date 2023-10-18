@@ -1,14 +1,14 @@
 import './index.css';
 import { AppRegistry } from 'react-native';
-import { App } from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import './i18n';
 
 AppRegistry.registerComponent('App', () => App);
 AppRegistry.runApplication('App', {
-  initialProps: {},
-  rootTag: document.getElementById('react-root'),
+	initialProps: {},
+	rootTag: document.getElementById('react-root'),
 });
 
 // If you want to start measuring performance in your app, pass a function

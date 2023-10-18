@@ -8,11 +8,20 @@ import {
 	Dimensions,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import Login from '../contexts/Login';
+import Logout from '../contexts/Logout';
+import { useAuth } from '../contexts/useAuth';
 
 const Home = () => {
+	//const { authed, loading } = useAuth();
 	const { t } = useTranslation();
 	return (
 		<View style={styles.container}>
+			{/* {authed ? <Logout /> : <Login />}
+			<div style={{ margin: '20px' }}>
+				<span>Auth Status: {authed ? 'Logged In' : 'Not Logged In'}</span>
+			</div> */}
+
 			<View>
 				<Text style={styles.heading}>Fresh Track</Text>
 				<Text style={styles.subheading}>
