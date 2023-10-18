@@ -3,13 +3,13 @@ import Language from '../components/Language';
 import { useTranslation } from 'react-i18next';
 import { View, StyleSheet } from 'react-native';
 
-const Profile = ({onLogout}) => {
+const Profile = () => {
     const { t } = useTranslation();
     return (
         <View style={styles.container}>
             <h1>{t('profile')}</h1>
             <Language />
-            <button onClick={onLogout}>{t('logout')}</button>
+            <button>{t('logout')}</button>
         </View>
     );
 }

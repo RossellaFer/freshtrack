@@ -14,10 +14,10 @@ const AuthContext = createContext();
 export const AuthData = () => useContext(AuthContext);
 
 function App() {
-  
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	return (
 	  <Router>
-		<AuthContext.Provider>
+		<AuthContext.Provider value={{isAuthenticated}}>
 		  <Routes>
 			<Route
 			  path="/"
