@@ -1,7 +1,9 @@
 import './index.css';
 import { AppRegistry } from 'react-native';
-import App from './App';
+import { App } from './App';
 import reportWebVitals from './reportWebVitals';
+
+import './i18n';
 
 AppRegistry.registerComponent('App', () => App);
 AppRegistry.runApplication('App', {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { StyleSheet, SafeAreaView, View, Dimensions } from 'react-native';
+import { StyleSheet, SafeAreaView, Dimensions } from 'react-native';
 import Navbar from '../components/Navbar';
 
 const Root = () => {
@@ -20,5 +20,11 @@ const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#fff',
 		height: ScreenHeight,
+		maxWidth: '600px',
+		marginTop: '0',
+		marginBottom: '0',
+		marginLeft: 'auto',
+		marginRight: 'auto',
+		padding: 10,
 	},
 });
