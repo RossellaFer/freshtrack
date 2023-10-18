@@ -17,7 +17,6 @@ const Language = () => {
   return (
       <ToggleButtonGroup value={dropdownLang} onChange={languageHandler}>
         <ToggleButton value="en">English</ToggleButton>
-        <ToggleButton value="it">Italiano</ToggleButton>
         <ToggleButton value="jp">日本語</ToggleButton>
       </ToggleButtonGroup>
   );
