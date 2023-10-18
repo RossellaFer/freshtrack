@@ -1,5 +1,13 @@
 {
     "profile": "プロフィール",
     "button": "ボタン",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "impact": "インパクト",
+    "impact_info": "私たちのアプリを利用することで、5.7kgのCO2を節約したことになります！",
+    "food": "Food donation",
+    "food_info": "Explore food banks or charities to donate your food. You can also donate money to help them.",
+    "sustainability": "Sustainability",
+    "sustainability_info": "By reducing food waste in households, we are not just saving money but also making a positive environmental difference.",
+    "community": "Community",
+    "community_info": "Join our community to share your experience and learn from others."
 }

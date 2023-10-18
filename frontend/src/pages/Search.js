@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		paddingInline: '1em',
 		justifyContent: 'center',
+		width: "100%"
 	},
 	view: { flex: 1, height: 100 },
 	scrollView: {
