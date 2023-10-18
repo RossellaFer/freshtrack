@@ -5,6 +5,7 @@ from myapp.models import MyModel
 
 import requests
 
+
 class Command(BaseCommand):
     help = 'My one-time script'
 
@@ -14,14 +15,13 @@ class Command(BaseCommand):
         response = requests.get(api_url)
 
         if response.status_code == 200:
-            data = response.json()
-            product_filtered_data = filter(lambda item: item['name'] == 'Product', data)
-            category_filtered_data = filter(lambda item: item['name'] == 'Category', data)
+            json_response = response.json()
+            data = json_response['sheets']
 
-            product_list = list(product_filtered_data)
+            product_list = list(filter(lambda item: item['name'] == 'Product', data))
+            category_list = list(filter(lambda item: item['name'] == 'Category', data))
+
             product_data = product_list[0]['data']
-
-            category_list = list(category_filtered_data)
             category_data = category_list[0]['data']
 
             for category in category_data:
