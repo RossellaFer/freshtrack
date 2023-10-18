@@ -15,26 +15,47 @@ export const AuthData = () => useContext(AuthContext);
 
 function App() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
+
 	return (
-	  <Router>
-		<AuthContext.Provider value={{isAuthenticated}}>
-		  <Routes>
-			<Route
-			  path="/"
-			  element={<Root />}
-			>
-			  <Route index element={<Home />} />
-			  <Route path='/impact' element={<Impact />}/>
-			  <Route path="/lists" element={<Search />} />
-			  <Route path="/profile" element={<Profile />} />
-			  <Route path='/createnew' element={<CreateNew />}/>
-			  <Route path='/scanner' element={<Scanner />}/>
-			  <Route path='/discover' element={<Discover />}/>
-			</Route>
-		  </Routes>
-		</AuthContext.Provider>
-	  </Router>
+		<Router>
+			<AuthContext.Provider value={{ isAuthenticated }}>
+				<Routes>
+					<Route
+						path='/'
+						element={<Root />}>
+						<Route
+							index
+							element={<Home />}
+						/>
+						<Route
+							path='/impact'
+							element={<Impact />}
+						/>
+						<Route
+							path='/lists'
+							element={<Search />}
+						/>
+						<Route
+							path='/profile'
+							element={<Profile />}
+						/>
+						<Route
+							path='/createnew'
+							element={<CreateNew />}
+						/>
+						<Route
+							path='/scanner'
+							element={<Scanner />}
+						/>
+						<Route
+							path='/discover'
+							element={<Discover />}
+						/>
+					</Route>
+				</Routes>
+			</AuthContext.Provider>
+		</Router>
 	);
-  }
-  
-  export { App, AuthContext };
+}
+
+export { App, AuthContext };

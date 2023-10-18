@@ -1,5 +1,10 @@
 import React from 'react';
 import FoodCard from '../FoodCard';
+import { ScrollView, StyleSheet } from 'react-native';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import CreateIcon from '@mui/icons-material/Create';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function filterResults(results) {
 	let filteredResults = [];
@@ -18,14 +23,28 @@ function filterResults(results) {
 }
 
 const ResultContainerTable = ({ data }) => {
-	console.log(data);
 	const results = filterResults(data);
 	return results.map((item, i) => (
-		<FoodCard
-			key={i}
-			item={item}
-			type='scanAdd'
-		/>
+		<div
+			style={styles.card}
+			key={i}>
+			<FoodCard
+				key={i}
+				item={item}
+				type='scanAdd'
+			/>
+			<div style={styles.cardview}>
+				<div>
+					<IconButton size='small'>
+						<CreateIcon />
+					</IconButton>
+					<IconButton size='small'>
+						<DeleteIcon />
+					</IconButton>
+				</div>
+				<Button style={styles.cardbutton}>My Pantry</Button>
+			</div>
+		</div>
 	));
 	// <table className={'Qrcode-result-table'}>
 	// 	<thead>
@@ -63,12 +82,46 @@ const ResultContainerPlugin = (props) => {
 				<div className='Result-header'>Start Scanning Barcodes</div>
 			)}
 			<div className='Result-container'>
-				<div className='Result-section'>
-					<ResultContainerTable data={results} />
-				</div>
+				<ScrollView style={styles.scroll}>
+					<div className='Result-section'>
+						<ResultContainerTable data={results} />
+					</div>
+				</ScrollView>
+				{results.length > 1 ? (
+					<Button style={styles.button}>Save All Items</Button>
+				) : (
+					<></>
+				)}
 			</div>
 		</div>
 	);
 };
 
+const styles = StyleSheet.create({
+	scroll: {
+		height: '40vh',
+		paddingBottom: '30vh',
+	},
+	button: {
+		zIndex: 100,
+		position: 'fixed',
+		bottom: '8vh',
+		padding: '1rem',
+		borderRadius: 50,
+		margin: '0.5rem',
+		color: 'white',
+		backgroundColor: 'black',
+	},
+	cardview: {
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	},
+	cardbutton: {
+		borderRadius: 50,
+		margin: '0.5rem',
+		color: 'white',
+		backgroundColor: 'gray',
+	},
+});
 export default ResultContainerPlugin;

@@ -9,12 +9,12 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
-import Button from '@mui/material/Button';
 
 const FoodCard = (props) => {
 	const [open, setOpen] = React.useState(false);
 	const [status, setStatus] = React.useState('');
 
+	//
 	const handleClick = () => {
 		setStatus('Success');
 		setOpen(true);
@@ -45,7 +45,7 @@ const FoodCard = (props) => {
 			variant='outlined'>
 			{/* time Icon */}
 			<Box style={{ height: '100%' }}>
-				<CircleIcon />
+				<CircleIcon size='small' />
 			</Box>
 			{/* Name and Expires in 1 month */}
 			<Box

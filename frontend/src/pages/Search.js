@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import {
 	Pressable,
 	StyleSheet,
-	SafeAreaView,
 	View,
 	TextInput,
 	ScrollView,
 } from 'react-native';
 
 import FoodCard from '../components/FoodCard';
+import Sort from '../components/Sort';
 import { foodInfo } from '../data/foodsaver.js';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -20,6 +20,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import DocumentScannerOutlinedIcon from '@mui/icons-material/DocumentScannerOutlined';
 import SortOutlinedIcon from '@mui/icons-material/SortOutlined';
 
+import CreateNew from '../pages/CreateNew';
 const Search = () => {
 	const [timesPressed, setTimesPressed] = useState(0);
 
@@ -49,6 +50,27 @@ const Search = () => {
 
 			setResult(test);
 		}
+	};
+	//Sort Dialog
+	const [sortopen, setsortOpen] = React.useState(false);
+
+	const handleSortOpen = () => {
+		setsortOpen(true);
+	};
+
+	const handleSortClose = () => {
+		setsortOpen(false);
+	};
+
+	//Create New Dialog
+	const [cnopen, setcnOpen] = React.useState(false);
+	console.log(cnopen);
+	const handleCNOpen = () => {
+		setcnOpen(true);
+	};
+
+	const handleCNClose = () => {
+		setcnOpen(false);
 	};
 
 	return (
@@ -98,11 +120,7 @@ const Search = () => {
 				style={styles.buttonGroup}
 				variant='contained'
 				aria-label='outlined primary button group'>
-				<Button
-					label='Write'
-					value='/createnew'
-					component={Link}
-					to='/createnew'>
+				<Button onClick={handleCNOpen}>
 					<CreateIcon />
 					Write
 				</Button>
@@ -116,11 +134,19 @@ const Search = () => {
 					Scan
 				</Button>
 
-				<Button>
+				<Button onClick={handleSortOpen}>
 					<SortOutlinedIcon />
 					Sort
 				</Button>
 			</ButtonGroup>
+			<Sort
+				open={sortopen}
+				handleSortClose={handleSortClose}
+			/>
+			<CreateNew
+				open={cnopen}
+				handleCNClose={handleCNClose}
+			/>
 		</View>
 	);
 };
@@ -141,7 +167,6 @@ const styles = StyleSheet.create({
 	},
 	view: { flex: 1, height: 100 },
 	scrollView: {
-		flexGrow: 1,
 		margin: 20,
 		alignSelf: 'center',
 		paddingBottom: 100,

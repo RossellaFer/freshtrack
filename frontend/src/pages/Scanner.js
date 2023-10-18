@@ -1,16 +1,53 @@
 import React, { useState } from 'react';
-import { View, SafeAreaView, Pressable, StyleSheet } from 'react-native';
 import '../styles/scanner.css';
 import Html5QrcodePlugin from '../components/scanner/Html5QrcodePlugin';
 import ResultContainerPlugin from '../components/scanner/ResultContainerPlugin';
 import { Html5QrcodeScanner } from 'html5-qrcode';
+import { View, SafeAreaView, StyleSheet } from 'react-native';
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
+import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import CreateIcon from '@mui/icons-material/Create';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const Scanner = (props) => {
-	const [errorTotal, setErrorTotal] = useState(0);
 	const [decodedResults, setDecodedResults] = useState([]);
+
+	const [alertOpen, setAlertOpen] = React.useState(false);
+	const [alertStatus, setAlertStatus] = React.useState('');
+
+	const handleAlertClose = (reason) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+
+		setAlertOpen(false);
+	};
+	const alertAction = (
+		<React.Fragment>
+			<IconButton
+				size='small'
+				aria-label='close'
+				color='inherit'
+				onClick={handleAlertClose}>
+				<CloseIcon fontSize='small' />
+			</IconButton>
+		</React.Fragment>
+	);
 
 	//async function getFoodName(barcode) {
 	const getFoodName = async (barcode, decodedResult) => {
+		setAlertStatus('');
+		setAlertOpen(false);
+
 		try {
 			let foodURL =
 				'https://world.openfoodfacts.org/api/v2/product/' +
@@ -26,15 +63,22 @@ const Scanner = (props) => {
 			let answer = await response.json();
 			//console.log('ANSWER:' + answer);
 			//answer.product.product_name;
-			let name = answer.product.brands + ' - ' + answer.product.product_name;
+			let name = '';
+
+			if (answer.product.brands === undefined) {
+				name = answer.product.product_name;
+			} else {
+				name = answer.product.brands + ' - ' + answer.product.product_name;
+			}
 
 			//console.log('foodINfo:' + foodInfo);
 			//console.log('App [result]', decodedResult);
 			decodedResult.ScanName = name;
 			setDecodedResults((prev) => [...prev, decodedResult]);
 		} catch (error) {
-			console.error('ERROR: ' + error);
-			alert('unable to find Barcode, Please input item');
+			//console.error('ERROR: ' + error);
+			setAlertOpen(true);
+			setAlertStatus('Unable to find Barcode, Please create new item');
 		}
 	};
 
@@ -43,7 +87,7 @@ const Scanner = (props) => {
 		getFoodName(decodedText, decodedResult);
 		//console.log('App [result]', decodedResult);
 		/*
-console.log('foodINfo:' + foodInfo);
+		console.log('foodINfo:' + foodInfo);
 
 		console.log('App [result]', decodedResult);
 		setDecodedResults((prev) => [...prev, decodedResult]);
@@ -64,7 +108,7 @@ console.log('foodINfo:' + foodInfo);
 
 	// Square QR box with edge size = 70% of the smaller edge of the viewfinder.
 	let qrboxFunction = function (viewfinderWidth, viewfinderHeight) {
-		let minEdgePercentage = 0.7; // 70%
+		let minEdgePercentage = 0.9; // 70%
 		let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
 		let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
 		if (qrboxSize < 50) {
@@ -77,20 +121,39 @@ console.log('foodINfo:' + foodInfo);
 	};
 
 	return (
-		<div className='App'>
-			<section className='App-section'>
-				<Html5QrcodePlugin
-					fps={10}
-					qrbox={qrboxFunction}
-					aspectRatio={1.77777778}
-					disableFlip={false}
-					qrCodeSuccessCallback={onNewScanResult}
-				/>
+		<>
+			<SafeAreaView className='App'>
+				<Snackbar
+					anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+					open={alertOpen}
+					autoHideDuration={2000}
+					onClose={handleAlertClose}
+					message={alertStatus}
+					action={alertAction}
+					severity='error'></Snackbar>
+				<section className='App-section'>
+					<Html5QrcodePlugin
+						fps={10}
+						qrbox={qrboxFunction}
+						aspectRatio={1.77777778}
+						disableFlip={false}
+						qrCodeSuccessCallback={onNewScanResult}
+					/>
 
-				<ResultContainerPlugin results={decodedResults} />
-			</section>
-		</div>
+					<ResultContainerPlugin results={decodedResults} />
+				</section>
+			</SafeAreaView>
+		</>
 	);
 };
+const styles = StyleSheet.create({
+	button: {
+		width: '11em',
+		borderRadius: 50,
+		margin: '0.5rem',
+		color: 'white',
+		backgroundColor: 'black',
+	},
+});
 
 export default Scanner;
