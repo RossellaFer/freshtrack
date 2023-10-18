@@ -7,7 +7,7 @@ from .enums import Metric
 class FoodCategory(models.Model):
     name = models.CharField(max_length=120)
     sub_name = models.CharField(max_length=120)
-    external_id = models.CharField(max_length=50)
+    external_id = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -17,7 +17,7 @@ class Food(models.Model):
     name = models.CharField(max_length=120)
     description = models.TextField()
     keywords = models.TextField()
-    external_id = models.CharField(max_length=50)  # unique ID from FSIS API
+    external_id = models.CharField(max_length=50, blank=True, null=True)
     category = models.ForeignKey(
         FoodCategory,
         related_name='products',
