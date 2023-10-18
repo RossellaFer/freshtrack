@@ -4,10 +4,26 @@ from enumfields import EnumField
 from .enums import Metric
 
 
+class FoodCategory(models.Model):
+    name = models.CharField(max_length=120)
+    sub_name = models.CharField(max_length=120)
+    external_id = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
 class Food(models.Model):
     name = models.CharField(max_length=120)
     description = models.TextField()
     keywords = models.TextField()
+    external_id = models.CharField(max_length=50)  # unique ID from FSIS API
+    category = models.ForeignKey(
+        FoodCategory,
+        related_name='products',
+        on_delete=models.SET_NULL,
+        null=True,
+    )
 
     # Pantry fields
     pantry_min = models.IntegerField()
@@ -36,7 +52,13 @@ class Food(models.Model):
     freezer_tips = models.TextField()
     freezer_metric = EnumField(Metric, max_length=20, blank=True, null=True)
 
+    # Boolean fields
     expired = models.BooleanField(default=False)
+    consumed = models.BooleanField(default=False)
+
+    # Timestamps
+    created_at = models.DateTimeField(auto_now_add=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return self.name
