@@ -54,15 +54,18 @@ const FoodCard = (props) => {
 					flexDirection: 'column',
 					width: '100%',
 					padding: '0.5rem',
+					textAlign: 'left',
 				}}>
 				<span
 					style={{
 						fontSize: '1rem',
 						fontWeight: 'bold',
 					}}>
-					{props.item[2]?.Name}
+					{props.type === 'searchAdd'
+						? props.item[2]?.Name
+						: props.item.ScanName}
 				</span>
-				<span>Expires in</span>
+				{props.type === 'searchAdd' ? <span>Expires in</span> : <></>}
 			</Box>
 			{/* Image */}
 			<Box
@@ -89,6 +92,8 @@ const FoodCard = (props) => {
 							<AddCircleOutlineOutlinedIcon />
 						</IconButton>
 					</Pressable>
+				) : props.type === 'scanAdd' ? (
+					<></>
 				) : (
 					<div>
 						<span>My Pantry</span>

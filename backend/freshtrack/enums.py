@@ -1,0 +1,14 @@
+from enum import Enum
+
+
+class Metric(Enum):
+    HOURS = 'HOURS'
+    MONTHS = 'MONTHS'
+    WEEKS = 'WEEKS'
+    DAYS = 'DAYS'
+    YEARS = 'YEARS'
+    INDEFINITELY = 'INDEFINITLY'
+    PACKAGE_USE_BY_DATE = 'PACKAGE_USE_BY_DATE'
+    WHEN_RIPE = 'WHEN_RIPE'
+    NOT_RECOMMENDED = 'NOT_RECOMMENDED'
+
