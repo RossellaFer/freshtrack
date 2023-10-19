@@ -1,0 +1,7 @@
+.MuiImageListItemBar-titleWrap > .MuiImageListItemBar-subtitle {
+    white-space: normal !important;
+    line-height: 1.5 !important;
+    text-overflow: inherit !important;
+    height: auto !important;
+    overflow: auto !important;
+  }
