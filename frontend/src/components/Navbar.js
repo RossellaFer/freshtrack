@@ -42,7 +42,7 @@ const Navbar = () => {
 					<BottomNavigationAction
 						label='Discover'
 						value='/discover'
-						icon={<ExploreIcon />}
+						icon={<span className='material-symbols-outlined'>mystery</span>}
 						component={Link}
 						to='/discover'
 					/>

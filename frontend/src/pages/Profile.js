@@ -16,7 +16,7 @@ const Profile = () => {
 			{/* <button>{t('logout')}</button> */}
 			{authed ? <Logout /> : <Login />}
 			<div style={{ margin: '20px' }}>
-				<span>Auth Status: {authed ? 'Logged In' : 'Not Logged In'}</span>
+				{/* <span>Auth Status: {authed ? 'Logged In' : 'Not Logged In'}</span> */}
 			</div>
 		</View>
 	);

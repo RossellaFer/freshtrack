@@ -13,6 +13,7 @@ import ProtectedRoute from './contexts/ProtectedRoute';
 import { AuthProvider, useAuth } from './contexts/useAuth';
 import Login from './contexts/Login';
 import Navbar from './components/Navbar';
+import Register from './contexts/Register';
 // const AuthContext = createContext();
 // export const AuthData = () => useContext(AuthContext);
 
@@ -41,6 +42,10 @@ function App() {
 							<Route
 								path='/login'
 								element={<Login />}
+							/>
+							<Route
+								path='/register'
+								element={<Register />}
 							/>
 
 							<Route

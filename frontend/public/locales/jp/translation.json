@@ -1,5 +1,9 @@
 {
-    "profile": "プロフィール",
-    "button": "ボタン",
-    "logout": "ログアウト"
+	"freshtrack": "フレッシュトラック",
+	"profile": "プロフィール",
+	"button": "ボタン",
+	"logout": "ログアウト",
+	"signInButton": "サインイン",
+	"registerButton": "Register",
+	"NoAccountLink": "アカウントをお持ちでない場合は、サインアップ"
 }

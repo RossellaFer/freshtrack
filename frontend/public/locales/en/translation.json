@@ -1,5 +1,9 @@
 {
-    "profile": "Profile",
-    "button": "Example button",
-    "logout": "Logout"
+	"freshtrack": "Fresh Track",
+	"profile": "Profile",
+	"button": "Example button",
+	"logout": "Logout",
+	"signInButton": "Sign In",
+	"registerButton": "Register",
+	"NoAccountLink": "Don’t have an account? Sign Up"
 }

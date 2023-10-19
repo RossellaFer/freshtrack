@@ -24,8 +24,8 @@ export const AuthProvider = ({ children }) => {
 		}
 	}, []);
 
-	const login = async () => {
-		const result = await fakeAsyncLogin();
+	const login = async (creds) => {
+		const result = await fakeAsyncLogin(creds);
 
 		if (result) {
 			console.log('user has logged in');
@@ -47,7 +47,9 @@ export const AuthProvider = ({ children }) => {
 
 	/// Mock Async Login API call.
 	// TODO: Replace with your actual login API Call code
-	const fakeAsyncLogin = async () => {
+	const fakeAsyncLogin = async (data) => {
+		//console.log('LOGIN APICALL:' + data.email + '***' + data.password);
+
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
 				resolve('Logged In');
@@ -69,7 +71,7 @@ export const AuthProvider = ({ children }) => {
 	const fakeAsyncLogout = async () => {
 		return new Promise((resolve, reject) => {
 			setTimeout(() => {
-				resolve('The user has successfully logged on the server');
+				resolve('The user has successfully logged out the server');
 			}, 300);
 		});
 	};

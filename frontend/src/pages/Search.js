@@ -109,8 +109,14 @@ const Search = () => {
 						))
 					) : (
 						<View style={styles.emptycontent}>
-							<span>Type to display items to add</span>
-							<span>Tap the scan button to add food</span>
+							<span>Seeds of change start with your actions.</span>
+							<span>
+								Every entry in your list plants a seed for a waste-free world.{' '}
+							</span>
+							<span>Let's cultivate a sustainable tomorrow together!</span>
+
+							<span>Your list is now empty</span>
+							<span>tap the Write or Scan button to add food</span>
 						</View>
 					)}
 				</ScrollView>

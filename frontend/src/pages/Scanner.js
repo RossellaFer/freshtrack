@@ -7,16 +7,6 @@ import { View, SafeAreaView, StyleSheet } from 'react-native';
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import CreateIcon from '@mui/icons-material/Create';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const Scanner = (props) => {
 	const [decodedResults, setDecodedResults] = useState([]);
