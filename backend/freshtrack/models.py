@@ -5,8 +5,7 @@ from .enums import Metric
 
 
 class FoodCategory(models.Model):
-    name = models.CharField(max_length=120)
-    sub_name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120, unique=True)
     external_id = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
@@ -14,7 +13,7 @@ class FoodCategory(models.Model):
 
 
 class Food(models.Model):
-    name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120, unique=True)
     description = models.TextField()
     keywords = models.TextField()
     external_id = models.CharField(max_length=50, blank=True, null=True)
@@ -47,8 +46,8 @@ class Food(models.Model):
     refrigerate_after_thawing_metric = EnumField(Metric, max_length=20, blank=True, null=True)
 
     # Freezer fields
-    freeze_min = models.IntegerField()
-    freeze_max = models.IntegerField()
+    freezer_min = models.IntegerField()
+    freezer_max = models.IntegerField()
     freezer_tips = models.TextField()
     freezer_metric = EnumField(Metric, max_length=20, blank=True, null=True)
 
