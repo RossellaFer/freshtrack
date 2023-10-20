@@ -1,27 +1,22 @@
-// Login.tsx
 import React, { useState } from 'react';
 import { useAuth } from './useAuth';
-import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { Navigate } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function Login() {
-	const { authed, loading } = useAuth();
+	const { t } = useTranslation();
+	const { authed } = useAuth();
 
 	const [checkEmail, setCheckEmail] = useState(false);
 
@@ -62,14 +57,13 @@ export default function Login() {
 		});
 	}
 	const handleSubmit = (event) => {
+		//const data = new FormData(event.currentTarget);
 		// console.log({
 		// 	email: data.get('email'),
 		// 	password: data.get('password'),
 		// });
 		event.preventDefault();
 		setResult('');
-
-		const data = new FormData(event.currentTarget);
 
 		if (
 			credentials.password !== '' &&
@@ -87,7 +81,7 @@ export default function Login() {
 		<>
 			{authed ? (
 				<Navigate
-					to='/profile'
+					to='/lists'
 					replace
 				/>
 			) : (
@@ -103,7 +97,7 @@ export default function Login() {
 								flexDirection: 'column',
 								alignItems: 'center',
 							}}>
-							<Text style={styles.heading}>Fresh Track</Text>
+							<Text style={styles.heading}>{t('freshtrack')}</Text>
 							<Box
 								component='form'
 								onSubmit={handleSubmit}
@@ -114,7 +108,7 @@ export default function Login() {
 									required
 									fullWidth
 									id='email'
-									label='Email Address'
+									label={t('emailaddress')}
 									name='email'
 									type='email'
 									onChange={handleEmailChange}
@@ -127,7 +121,7 @@ export default function Login() {
 									required
 									fullWidth
 									name='password'
-									label='Password'
+									label={t('password')}
 									type='password'
 									id='password'
 									onChange={setCredentialsChange}
@@ -140,7 +134,7 @@ export default function Login() {
 									fullWidth
 									variant='contained'
 									sx={{ mt: 3, mb: 2, backgroundColor: 'var(--accent-1)' }}>
-									Sign In
+									{t('signInButton')}
 								</Button>
 
 								<Grid container>
@@ -148,7 +142,7 @@ export default function Login() {
 										<Link
 											href='/register'
 											variant='body2'>
-											{"Don't have an account? Sign Up"}
+											{t('NoAccountLink')}
 										</Link>
 									</Grid>
 								</Grid>
@@ -173,26 +167,3 @@ const styles = StyleSheet.create({
 		color: 'var(--error)',
 	},
 });
-
-// function Login() {
-// 	// Destructing our hook to get the `login` function
-// 	const { login } = useAuth();
-
-// 	return (
-// 		<View style={styles.container}>
-// 			<h1> LOGIN</h1>
-// 			<input placeholder='Email'></input>
-// 			<input placeholder='Password'></input>
-// 			<button onClick={login}>Login</button>
-// 		</View>
-// 	);
-// }
-// const styles = StyleSheet.create({
-// 	container: {
-// 		display: 'flex',
-// 		flex: 1,
-// 		flexDirection: 'column',
-// 		alignItems: 'center',
-// 	},
-// });
-// export default Login;

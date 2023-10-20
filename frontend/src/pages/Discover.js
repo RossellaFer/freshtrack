@@ -1,16 +1,17 @@
 import React from 'react';
-
+import SignInOrRegister from './SignInOrRegister';
 import { StyleSheet, View, Text } from 'react-native';
 
 const Discover = () => {
 	return (
-		<View style={styles.container}>
-			<Text style={styles.heading}>Discover</Text>
-			<Text style={styles.text}>
-				This is the Discover page. This page is only accessible to authenticated
-				users.
-			</Text>
-		</View>
+		<SignInOrRegister />
+		// <View style={styles.container}>
+		// 	<Text style={styles.heading}>Discover</Text>
+		// 	<Text style={styles.text}>
+		// 		This is the Discover page. This page is only accessible to authenticated
+		// 		users.
+		// 	</Text>
+		// </View>
 	);
 };
 

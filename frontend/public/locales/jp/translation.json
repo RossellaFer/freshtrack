@@ -13,5 +13,21 @@
 	"community_info": "Join our community to share your experience and learn from others.",
 	"signInButton": "サインイン",
 	"registerButton": "Register",
-	"NoAccountLink": "アカウントをお持ちでない場合は、サインアップ"
+	"NoAccountLink": "アカウントをお持ちでない場合は、サインアップ",
+	"joinMission": "食品廃棄物を減らすミッションに参加しよう！",
+	"sign_register": "Sign in or Register to start tracking your food",
+	"emailaddress": "メールアドレス",
+	"password": "パスワード",
+	"repeatpassword": "パスワードを再度入力してください",
+	"termscond": "Read Terms & Conditions",
+	"termsagree": "I Accept Terms & Conditions",
+	"haveAccountLink": "アカウントをお持ちですか？サインイン",
+	"getstarted": "始めよう",
+	"register_success": "登録は成功しました",
+	"search1": "Seeds of change start with your actions.",
+	"search2": "Every entry in your list plants a seed for a waste-free world.",
+	"search3": "Let's cultivate a sustainable tomorrow together!",
+	"search4": "Your list is now empty",
+	"search5": "Tap the Write or Scan button to add food",
+	"productInstruct": "Click on each product to check specific details"
 }

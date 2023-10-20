@@ -35,8 +35,14 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const CreateNew = (props) => {
 	const [foodForm, setFoodForm] = useState({
 		FoodName: '',
+		location: '',
+		expDate: '',
+		category: '',
+		favorite: '',
+		quantity: '',
 	});
-	console.log(foodForm);
+
+	
 	function handleFoodFormChange(input) {
 		let first = input.charAt(0).toUpperCase();
 		let rest = input.substring(1, input.length).toLowerCase();
@@ -87,7 +93,8 @@ const CreateNew = (props) => {
 						aria-label='my fridge'>
 						<KitchenIcon /> My Fridge
 					</Button>
-				</View>
+				</View> 
+				
 				<Text style={styles.heading}>Select an expiration date</Text>
 				<View style={styles.content}>
 					<Button

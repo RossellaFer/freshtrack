@@ -1,13 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-	View,
-	StyleSheet,
-	Text,
-	Dimensions,
-	Image,
-	Pressable,
-} from 'react-native';
+import { View, StyleSheet, Text, Dimensions, Image } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import Button from '@mui/material/Button';
 
@@ -16,10 +9,9 @@ const SignInOrRegister = () => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.heading}>{t('freshtrack')}</Text>
-			<Text style={styles.subheading}>
-				Lorem Ipsum is simply dummy text of the printing and typesetting
-				industry.
-			</Text>
+			<Text style={styles.subheading}>{t('joinMission')}</Text>
+			<Text style={styles.subheading}>{t('sign_register')}</Text>
+
 			<Image
 				style={styles.image}
 				source={require('../assets/placeholder.png')}
@@ -31,7 +23,7 @@ const SignInOrRegister = () => {
 					component={Link}
 					to='/login'
 					style={buttonStyles.sbutton}>
-					<Text style={buttonStyles.stext}>{t('signInButton')}</Text>
+					{t('signInButton')}
 				</Button>
 				<Button
 					label='Register'
@@ -39,7 +31,7 @@ const SignInOrRegister = () => {
 					component={Link}
 					to='/register'
 					style={buttonStyles.rbutton}>
-					<Text style={buttonStyles.rtext}>{t('registerButton')}</Text>
+					{t('registerButton')}
 				</Button>
 			</View>
 		</View>
@@ -48,6 +40,7 @@ const SignInOrRegister = () => {
 let ScreenHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
 	container: {
+		display: 'flex',
 		flex: 1,
 		backgroundColor: 'var(--basic-w)',
 		alignItems: 'center',
@@ -64,11 +57,13 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 	},
 	subheading: {
+		fontSize: '1rem',
 		fontWeight: 'bold',
+		textAlign: 'center',
 	},
 	image: {
-		width: '10vh',
-		height: '10vh',
+		width: '20vh',
+		height: '20vh',
 		marginBottom: 5,
 		marginTop: 5,
 	},
@@ -90,14 +85,9 @@ const buttonStyles = StyleSheet.create({
 		paddingLeft: 24,
 		paddingRight: 24,
 		marginTop: 20,
-	},
-	rtext: {
 		color: 'var(--basic-w)',
-		fontWeight: '500',
-		lineHeight: 21,
-		letterSpacing: 0.25,
-		textAlign: 'center',
 	},
+
 	sbutton: {
 		backgroundColor: 'var(--basic-w)',
 		borderRadius: 100,
@@ -107,13 +97,7 @@ const buttonStyles = StyleSheet.create({
 		paddingRight: 24,
 		marginTop: 20,
 		border: '1px solid var(--basic)',
-	},
-	stext: {
 		color: 'var(--basic)',
-		fontWeight: '500',
-		lineHeight: 21,
-		letterSpacing: 0.25,
-		textAlign: 'center',
 	},
 });
 export default SignInOrRegister;

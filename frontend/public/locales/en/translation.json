@@ -13,5 +13,21 @@
 	"community_info": "Join our community to share your experience and learn from others.",
 	"signInButton": "Sign In",
 	"registerButton": "Register",
-	"NoAccountLink": "Don’t have an account? Sign Up"
+	"NoAccountLink": "Don’t have an account? Sign Up",
+	"joinMission": "Join the mission to reduce food waste!",
+	"sign_register": "Sign in or Register to start tracking your food",
+	"emailaddress": "Email Address",
+	"password": "Password",
+	"repeatpassword": "Repeat Password",
+	"termscond": "Read Terms & Conditions",
+	"termsagree": "I accept Terms & Conditions",
+	"haveAccountLink": "Already have an account? Sign in",
+	"getstarted": "Get Started",
+	"register_success": "YOUR REGISTRATION WAS SUCCESSFUL!!",
+	"search1": "Seeds of change start with your actions.",
+	"search2": "Every entry in your list plants a seed for a waste-free world.",
+	"search3": "Let's cultivate a sustainable tomorrow together!",
+	"search4": "Your list is now empty",
+	"search5": "Tap the Write or Scan button to add food",
+	"productInstruct": "Click on each product to check specific details"
 }

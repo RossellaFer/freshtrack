@@ -1,6 +1,6 @@
 // ProtectedRoute.tsx
 import React from 'react';
-import { Route, Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useAuth } from './useAuth';
 
 // We are taking in the component that should be rendered if the user is authed
@@ -19,34 +19,6 @@ const ProtectedRoute = ({ children }) => {
 			replace
 		/>
 	);
-
-	// 	return (
-	// 		<Route
-	// 			{...rest}
-	// 			render={(props) => {
-	// 				if (authed) {
-	// 					return (
-	// 						<Outlet
-	// 							{...rest}
-	// 							{...props}
-	// 						/>
-	// 					);
-	// 				} else {
-	// 					// If they are not then we need to redirect to a public page
-	// 					return (
-	// 						<Navigate
-	// 							to={{
-	// 								pathname: '/home',
-	// 								state: {
-	// 									from: props.location,
-	// 								},
-	// 							}}
-	// 						/>
-	// 					);
-	// 				}
-	// 			}}
-	// 		/>
-	// 	);
 };
 
 export default ProtectedRoute;

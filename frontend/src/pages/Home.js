@@ -8,9 +8,8 @@ import {
 	Dimensions,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import Login from '../contexts/Login';
-import Logout from '../contexts/Logout';
-import { useAuth } from '../contexts/useAuth';
+import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 const Home = () => {
 	//const { authed, loading } = useAuth();
@@ -34,11 +33,15 @@ const Home = () => {
 				style={styles.image}
 				source={require('../assets/placeholder.png')}
 			/>
-			<Pressable
-				onPress={() => {}}
+			 <Pressable
+				
 				style={buttonStyles.button}>
-				<Text style={buttonStyles.text}>{t('button')}</Text>
-			</Pressable>
+					<Link to='/signInOrRegister'>
+					<Text style={buttonStyles.text}>{t('button')}</Text>
+					</Link>
+				
+			</Pressable> 
+			
 		</View>
 	);
 };
@@ -89,6 +92,7 @@ const buttonStyles = StyleSheet.create({
 		marginTop: 20,
 	},
 	text: {
+	textDecoration: 'none',
 		color: '#fff',
 		fontWeight: '500',
 		lineHeight: 21,

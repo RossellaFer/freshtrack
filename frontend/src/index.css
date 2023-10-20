@@ -4,8 +4,13 @@
 	--basic: #000000;
 	--basic-w: #ffffff;
 	--accent-1: #199754;
-	--accent-2: #1e69e1;
+	--accent-2: #19b294;
 	--error: #fa0505;
+	--100left: #126c3c;
+	--75left: #7dc116;
+	--50left: #e4d507;
+	--25left: #ed6d04;
+	--expired: #ff0000;
 }
 
 body {

@@ -6,11 +6,13 @@ import {
 	View,
 	TextInput,
 	ScrollView,
+	Dimensions,
+	StatusBar,
+	Image,
 } from 'react-native';
-
 import FoodCard from '../components/FoodCard';
 import Sort from '../components/Sort';
-import { foodInfo } from '../data/foodsaver.js';
+import { freezer, fridge, pantry } from '../data/foodsavertest.js';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
@@ -19,36 +21,86 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import CreateIcon from '@mui/icons-material/Create';
 import DocumentScannerOutlinedIcon from '@mui/icons-material/DocumentScannerOutlined';
 import SortOutlinedIcon from '@mui/icons-material/SortOutlined';
-
 import CreateNew from '../pages/CreateNew';
+import { useTranslation } from 'react-i18next';
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+
+import Select from '@mui/material/Select';
+import { useAuth } from '../contexts/useAuth';
+import { useEffect } from 'react';
+import { Picker } from 'react-native-web';
+
+import StorefrontRoundedIcon from '@mui/icons-material/StorefrontRounded';
+import KitchenIcon from '@mui/icons-material/Kitchen';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+
 const Search = () => {
-	const [timesPressed, setTimesPressed] = useState(0);
+	const { t } = useTranslation();
+	const [vis, setVis] = useState({
+		fridge: true,
+		freezer: true,
+		pantry: true,
+	});
 
-	let textLog = '';
-	if (timesPressed > 1) {
-		textLog = timesPressed + 'x onPress';
-	} else if (timesPressed > 0) {
-		textLog = 'onPress';
-	}
+	const [resultFridge, setResultFridge] = useState([]);
+	const [resultPantry, setResultPantry] = useState([]);
+	const [resultFreezer, setResultFreezer] = useState([]);
+	const [category, setCategory] = useState('');
+	const [status, setStatus] = useState(false);
+	const { user } = useAuth();
 
-	const [text, onChangeText] = React.useState('');
+	useEffect(() => {
+		fetchInitialData(user).then((callComplete) => {
+			if (callComplete) {
+				setStatus(false);
+			} else {
+				setStatus(true);
+			}
+		});
+	}, []);
 
-	const [foodName, setFoodName] = useState('');
+	const fetchInitialData = async (userdata) => {
+		setResultFridge(fridge);
+		setResultPantry(pantry);
+		setResultFreezer(freezer);
 
-	const [result, setResult] = useState([]);
+		if (fridge.length > 0 || pantry.length > 0 || freezer.length > 0) {
+			setCategory('All');
+		}
 
-	const handleSubmit = (e) => {
-		setResult([]);
-		e.preventDefault();
-		if (foodName !== '') {
-			let test = foodInfo[0].sheets[2].data.filter(
-				(product) =>
-					product[4].Keywords !== null &&
-					product[4].Keywords.includes(foodName.trim())
-			);
-			//console.log(test);
+		return new Promise((resolve, reject) => {
+			setTimeout(() => {
+				resolve(true);
+			}, 300);
+		});
+	};
 
-			setResult(test);
+	const handleCategoryFilter = (itemValue) => {
+		setCategory(itemValue);
+
+		switch (itemValue) {
+			case 'fridge':
+				setVis(() => {
+					return { fridge: true, freezer: false, pantry: false };
+				});
+				break;
+			case 'freezer':
+				setVis(() => {
+					return { freezer: true, fridge: false, pantry: false };
+				});
+				break;
+			case 'pantry':
+				setVis(() => {
+					return { pantry: true, freezer: false, fridge: false };
+				});
+				break;
+			default:
+				setVis(() => {
+					return { fridge: true, freezer: true, pantry: true };
+				});
+				break;
 		}
 	};
 	//Sort Dialog
@@ -64,7 +116,7 @@ const Search = () => {
 
 	//Create New Dialog
 	const [cnopen, setcnOpen] = React.useState(false);
-	console.log(cnopen);
+
 	const handleCNOpen = () => {
 		setcnOpen(true);
 	};
@@ -76,71 +128,138 @@ const Search = () => {
 	return (
 		<View style={styles.container}>
 			<Box style={styles.searchsection}>
-				<TextInput
-					value={foodName}
-					onChangeText={setFoodName}
-					placeholder='food name'
-					name='name'
-					style={styles.input}
-				/>
-				<Pressable
+				<Picker
+					selectedValue={category}
+					onValueChange={handleCategoryFilter}
+					style={styles.input}>
+					<Picker.Item
+						label="All Categories"
+						value="All"
+					/>
+					<Picker.Item
+						label="Fridge"
+						value="fridge"
+					/>
+					<Picker.Item
+						label="Freezer"
+						value="freezer"
+					/>
+					<Picker.Item
+						label="Pantry"
+						value="pantry"
+					/>
+				</Picker>
+				{/* <Pressable
 					style={styles.button}
-					onPress={handleSubmit}>
-					<IconButton aria-label='search'>
+					onPress={handleSearch}>
+					<IconButton aria-label="search">
 						<SearchIcon />
 					</IconButton>
-				</Pressable>
+				</Pressable> */}
 			</Box>
-			<View style={styles.view}>
-				<ScrollView
-					vertical
-					scrollEnabled='true'
-					nestedScrollEnabled='true'
-					overScrollMode='always'
-					style={styles.scrollView}
-					contentContainerStyle={styles.contentContainer}>
-					{result.length > 0 ? (
-						result.map((item) => (
-							<FoodCard
-								key={item[0]?.ID}
-								item={item}
-								type='searchAdd'
-							/>
-						))
-					) : (
-						<View style={styles.emptycontent}>
-							<span>Seeds of change start with your actions.</span>
-							<span>
-								Every entry in your list plants a seed for a waste-free world.{' '}
-							</span>
-							<span>Let's cultivate a sustainable tomorrow together!</span>
+			<span>{status ? 'Fetching Food...' : ''}</span>
+			{category !== '' ? (
+				<View style={styles.view}>
+					<span style={styles.subheading}>{t('productInstruct')}</span>
+					<ScrollView
+						vertical
+						scrollEnabled="true"
+						nestedScrollEnabled="true"
+						overScrollMode="always"
+						style={styles.scrollView}
+						contentContainerStyle={styles.contentContainer}>
+						{resultFridge.length > 0 && vis.fridge ? (
+							<>
+								<span style={styles.group}>
+									<KitchenIcon /> Fridge
+								</span>
+								{resultFridge.map((item, i) => (
+									<FoodCard
+										key={item.id}
+										item={item}
+										type="current"
+										location="fridge"
+									/>
+								))}
+							</>
+						) : (
+							<></>
+						)}
 
-							<span>Your list is now empty</span>
-							<span>tap the Write or Scan button to add food</span>
-						</View>
-					)}
-				</ScrollView>
-			</View>
+						{resultPantry.length > 0 && vis.pantry ? (
+							<>
+								<span style={styles.group}>
+									<StorefrontRoundedIcon /> Pantry
+								</span>
+								{resultPantry.map((item, i) => (
+									<FoodCard
+										key={item.id}
+										item={item}
+										type="current"
+										location="pantry"
+									/>
+								))}
+							</>
+						) : (
+							<></>
+						)}
+						{resultFreezer.length && vis.freezer > 0 ? (
+							<>
+								<span style={styles.group}>
+									<AcUnitIcon /> Freezer
+								</span>
+								{resultFreezer.map((item, i) => (
+									<FoodCard
+										key={item.id}
+										item={item}
+										type="current"
+										location="freezer"
+									/>
+								))}
+							</>
+						) : (
+							<></>
+						)}
+					</ScrollView>
+				</View>
+			) : (
+				<View style={styles.emptycontent}>
+					<span>{t('search1')}</span>
+					<span>{t('search2')}</span>
+					<span>{t('search3')}</span>
+					<Image
+						style={styles.image}
+						source={require('../assets/placeholder.png')}
+					/>
+					<span>{t('search4')}</span>
+					<span>{t('search5')}</span>
+				</View>
+			)}
 
 			<ButtonGroup
 				style={styles.buttonGroup}
-				variant='contained'
-				aria-label='outlined primary button group'>
-				<Button onClick={handleCNOpen}>
+				variant="contained"
+				aria-label="outlined primary button group">
+				<Button
+					style={styles.bGButton}
+					onClick={handleCNOpen}>
 					<CreateIcon />
 					Write
 				</Button>
 
 				<Button
-					label='Scan'
-					value='/scanner'
+					style={styles.bGButton}
+					label="Scan"
+					value="/scanner"
 					component={Link}
-					to='/scanner'>
+					to="/scanner">
 					<DocumentScannerOutlinedIcon sx={{ transform: 'rotate(90deg)' }} />
 					Scan
 				</Button>
 
-				<Button onClick={handleSortOpen}>
+				<Button
+					style={styles.bGButton}
+					onClick={handleSortOpen}>
 					<SortOutlinedIcon />
 					Sort
 				</Button>
@@ -157,12 +276,13 @@ const Search = () => {
 	);
 };
 
+let ScreenHeight = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
 	container: {
-		display: 'flex',
-		flex: 1,
-		flexDirection: 'column',
 		alignItems: 'center',
+		height: ScreenHeight,
+		marginBottom: StatusBar.currentHeight,
 	},
 
 	searchsection: {
@@ -170,35 +290,34 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		paddingInline: '1em',
 		justifyContent: 'center',
-		width: "100%"
 	},
-	view: { flex: 1, height: 100 },
+	view: { flex: 1, placeItems: 'center' },
 	scrollView: {
 		margin: 20,
 		alignSelf: 'center',
-		paddingBottom: 100,
 	},
 	contentContainer: {
 		flexGrow: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
 
-		paddingBottom: 50,
+		alignItems: 'center',
 	},
 
 	emptycontent: {
 		display: 'flex',
 		flexDirection: 'column',
-		justifyContent: 'center',
-
+		height: '70%',
+		width: '80%',
+		alignItems: 'center',
+		justifyContent: 'space-evenly',
+		fontWeight: 'bold',
+		fontSize: '1rem',
 		textAlign: 'center',
 	},
 	input: {
-		width: '60vw',
-		margin: 12,
+		margin: '1rem',
 		borderWidth: 1,
-		padding: 10,
 		borderRadius: 50,
+		padding: '1rem',
 	},
 	button: {
 		borderColor: 'gray',
@@ -216,53 +335,26 @@ const styles = StyleSheet.create({
 		bottom: '15vh',
 		zIndex: 1000,
 	},
+	image: {
+		width: '20vh',
+		height: '20vh',
+	},
+	bGButton: {
+		cursor: 'pointer',
+		backgroundColor: 'var(--basic)',
+		borderColor: 'var(--basic-w)',
+	},
+	subheading: {
+		fontWeight: 'bold',
+		fontSize: '1rem',
+		textAlign: 'center',
+		width: '80%',
+	},
+	group: {
+		fontWeight: 'bold',
+		fontSize: '1.4rem',
+		color: 'var(--accent-2)',
+	},
 });
 
 export default Search;
-
-/* <Pressable
-				onPress={() => {
-					setTimesPressed((current) => current + 1);
-				}}
-				style={({ pressed }) => [
-					{
-						backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white',
-					},
-					styles.wrapperCustom,
-				]}>
-				{({ pressed }) => (
-					<Text style={styles.text}>{pressed ? 'Pressed!' : 'Press Me'}</Text>
-				)}
-			</Pressable>
-			<View style={styles.logBox}>
-				<Text testID='pressable_press_console'>{textLog}</Text>
-			</View> 
-			
-			
-			
-				<h1>
-								{item[0]?.ID} - {item[2]?.Name}
-							</h1>
-							<h2>Keywords: {item[4]?.Keywords}</h2>
-							<h3>How long it will last from Date of Purchase:</h3>
-							<br />
-							<span>
-								Pantry: {item[9]?.DOP_Pantry_Min} - {item[10]?.DOP_Pantry_Max}{' '}
-								{item[11]?.DOP_Pantry_Metric}
-								<br />
-								{item[8]?.Pantry_tips}
-							</span>
-							<br />
-							<span>
-								Refrigerated: {item[20]?.DOP_Refrigerate_Min} -
-								{item[21]?.DOP_Refrigerate_Max}{' '}
-								{item[22]?.DOP_Refrigerate_Metric}
-							</span>
-							<br />
-							<span>
-								Frozen: {item[30]?.Freeze_Min} - {item[31]?.Freeze_Max}{' '}
-								{item[32]?.Freeze_Metric}
-								<br />
-								{item[33]?.Freeze_Tips}
-							</span>
-							*/

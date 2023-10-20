@@ -8,7 +8,6 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import PublicIcon from '@mui/icons-material/Public';
 import PersonIcon from '@mui/icons-material/Person';
-import ExploreIcon from '@mui/icons-material/Explore';
 
 const Navbar = () => {
 	const pathname = window.location.pathname; // in case user visits the path directly. The BottomNavBar is able to follow suit.
@@ -19,7 +18,12 @@ const Navbar = () => {
 	return (
 		<Box style={styles.container}>
 			<Paper
-				sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
+				sx={{
+					position: 'fixed',
+					bottom: 0,
+					left: 0,
+					right: 0,
+				}}
 				elevation={3}>
 				<BottomNavigation
 					value={value}

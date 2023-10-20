@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, createContext, useContext } from 'react';
+import React from 'react';
 import Home from './pages/Home';
 import Root from './components/Root.js';
 import Search from './pages/Search.js';
@@ -10,22 +10,17 @@ import Scanner from './pages/Scanner.js';
 import Profile from './pages/Profile.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './contexts/ProtectedRoute';
-import { AuthProvider, useAuth } from './contexts/useAuth';
+import { AuthProvider } from './contexts/useAuth';
 import Login from './contexts/Login';
-import Navbar from './components/Navbar';
 import Register from './contexts/Register';
-// const AuthContext = createContext();
-// export const AuthData = () => useContext(AuthContext);
+import RegisterSuccess from './contexts/RegisterSuccess';
+import SignInOrRegister from './pages/SignInOrRegister';
 
 function App() {
-	// const [isAuthenticated, setIsAuthenticated] = useState(false);
-
 	return (
 		<>
 			<AuthProvider>
 				<Router>
-					{/* <AuthContext.Provider value={{ isAuthenticated }}> */}
-
 					<Routes>
 						<Route
 							path='/'
@@ -38,14 +33,25 @@ function App() {
 								path='/home'
 								element={<Home />}
 							/>
-
+<Route
+								path='/signInOrRegister'
+								element={<SignInOrRegister/>}
+							/>
 							<Route
 								path='/login'
 								element={<Login />}
 							/>
+
+
+
 							<Route
 								path='/register'
 								element={<Register />}
+							/>
+
+							<Route
+								path='/registersuccess'
+								element={<RegisterSuccess />}
 							/>
 
 							<Route
@@ -87,20 +93,14 @@ function App() {
 							/>
 							<Route
 								path='/discover'
-								element={
-									<ProtectedRoute>
-										<Discover />
-									</ProtectedRoute>
-								}
+								element={<Discover />}
 							/>
 						</Route>
 					</Routes>
-					{/* </AuthContext.Provider> */}
 				</Router>
 			</AuthProvider>
 		</>
 	);
 }
 
-// export { App, AuthContext };
 export default App;
