@@ -5,4 +5,8 @@ from .models import Food
 class FoodSerializer(serializers.ModelSerializer):
     class Meta:
         model = Food
-        fields = '__all__'
+        # TODO: fix enum field JSON issue
+        fields = (
+            'name',
+            'keywords',
+        )

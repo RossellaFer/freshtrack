@@ -84,8 +84,9 @@ class Command(BaseCommand):
                     ).first()
 
                     external_id = product.get('ID', None)
-                    name = product.get('Category_Name', None)
+                    name = product.get('Name', None)
                     description = product.get('Name_subtitle', None)
+                    combined_name = f'{name}{f": {description}" if description else ""}'
                     keywords = product.get('Keywords', None)
 
                     # Pantry fields
@@ -123,42 +124,38 @@ class Command(BaseCommand):
                     freezer_metric = product.get('Freeze_Metric', None)
                     freezer_tips = product.get('Freeze_Tips', None)
 
-                    food_to_create.append(
-                        Food(
-                            name=name,
-                            description=description,
-                            keywords=keywords,
-                            external_id=external_id,
-                            category=category,
-                            pantry_min=pantry_min or dop_pantry_min,
-                            pantry_max=pantry_max or dop_pantry_max,
-                            pantry_metric=self.convert_enum_field(pantry_metric) or self.convert_enum_field(dop_pantry_metric),
-                            pantry_tips=pantry_tips or dop_pantry_tips,
-                            pantry_after_opening_min=pantry_after_opening_min,
-                            pantry_after_opening_max=pantry_after_opening_max,
-                            pantry_after_opening_metric=self.convert_enum_field(pantry_after_opening_metric),
-                            refrigerate_min=refrigerate_min or dop_refrigerate_min,
-                            refrigerate_max=refrigerate_max or dop_refrigerate_max,
-                            refrigerate_metric=self.convert_enum_field(refrigerate_metric) or self.convert_enum_field(dop_refrigerate_metric),
-                            refrigerate_tips=refrigerate_tips or dop_refrigerate_tips,
-                            refrigerate_after_opening_min=refrigerate_after_opening_min,
-                            refrigerate_after_opening_max=refrigerate_after_opening_max,
-                            refrigerate_after_opening_metric=self.convert_enum_field(refrigerate_after_opening_metric),
-                            refrigerate_after_thawing_min=refrigerate_after_thawing_min,
-                            refrigerate_after_thawing_max=refrigerate_after_thawing_max,
-                            refrigerate_after_thawing_metric=self.convert_enum_field(refrigerate_after_thawing_metric),
-                            freezer_min=freezer_min,
-                            freezer_max=freezer_max,
-                            freezer_tips=freezer_tips,
-                            freezer_metric=self.convert_enum_field(freezer_metric),
-                        )
+                    Food.objects.create(
+                        name=combined_name,
+                        keywords=keywords,
+                        external_id=external_id,
+                        category=category,
+                        pantry_min=pantry_min or dop_pantry_min,
+                        pantry_max=pantry_max or dop_pantry_max,
+                        pantry_metric=self.convert_enum_field(pantry_metric) or self.convert_enum_field(dop_pantry_metric),
+                        pantry_tips=pantry_tips or dop_pantry_tips,
+                        pantry_after_opening_min=pantry_after_opening_min,
+                        pantry_after_opening_max=pantry_after_opening_max,
+                        pantry_after_opening_metric=self.convert_enum_field(pantry_after_opening_metric),
+                        refrigerate_min=refrigerate_min or dop_refrigerate_min,
+                        refrigerate_max=refrigerate_max or dop_refrigerate_max,
+                        refrigerate_metric=self.convert_enum_field(refrigerate_metric) or self.convert_enum_field(dop_refrigerate_metric),
+                        refrigerate_tips=refrigerate_tips or dop_refrigerate_tips,
+                        refrigerate_after_opening_min=refrigerate_after_opening_min,
+                        refrigerate_after_opening_max=refrigerate_after_opening_max,
+                        refrigerate_after_opening_metric=self.convert_enum_field(refrigerate_after_opening_metric),
+                        refrigerate_after_thawing_min=refrigerate_after_thawing_min,
+                        refrigerate_after_thawing_max=refrigerate_after_thawing_max,
+                        refrigerate_after_thawing_metric=self.convert_enum_field(refrigerate_after_thawing_metric),
+                        freezer_min=freezer_min,
+                        freezer_max=freezer_max,
+                        freezer_tips=freezer_tips,
+                        freezer_metric=self.convert_enum_field(freezer_metric),
                     )
                     counter += 1
                 except Exception as e:
-                    print(f"An error occurred while creating FoodCategory: {e}")
+                    print(f"An error occurred while creating {product}: {e}")
 
-        # print('FOOD TO CREATE', food_to_create)
-        print(f'Successfully printed {counter} Food objects!')
+        print(f'Successfully created {counter} Food objects!')
 
 
     def handle(self, *args, **options):
