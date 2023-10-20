@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+After cloning the repository, you can run the following commands to get started:
+
+```
+cd frontend
+
+npm install
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
