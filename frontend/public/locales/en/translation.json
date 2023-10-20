@@ -14,6 +14,8 @@
 	"signInButton": "Sign In",
 	"registerButton": "Register",
 	"NoAccountLink": "Don’t have an account? Sign Up",
+	"Discover": "Discover",
+	"DiscoverInfo": "Storage Tips to  maximise freshness & minimise food waste",
 	"joinMission": "Join the mission to reduce food waste!",
 	"sign_register": "Sign in or Register to start tracking your food",
 	"emailaddress": "Email Address",
@@ -29,5 +31,72 @@
 	"search3": "Let's cultivate a sustainable tomorrow together!",
 	"search4": "Your list is now empty",
 	"search5": "Tap the Write or Scan button to add food",
-	"productInstruct": "Click on each product to check specific details"
+	"productInstruct": "Click on each product to check specific details",
+	"tips": [
+		{
+			"id": 1,
+			"tips": "Fridge temperature should always be around 4 degrees celsius.",
+			"img": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5",
+			"image_alt": "Closed fridge",
+			"featured": true
+		  },
+		  {
+			"id": 2,
+			"tips": "Store your vegetables and produce in the bottom drawers",
+			"img": "https://images.unsplash.com/photo-1542838132-92c53300491e",
+			"image_alt": "Supermarket fruit stand"
+		  },
+		  {
+			"id": 3,
+			"tips": "Store precooked and ready to eat items on the top shelf ",
+			"img": "https://images.unsplash.com/photo-1606859191214-25806e8e2423",
+			"image_alt": "Cooked and ready to eat products"
+		  },
+		  {
+			"id": 4,
+			"tips": "Certain fruits and vegetables emit ethylene gas, which can speed up the ripening process of nearby produce. Store ethylene-producing items like apples and bananas separately from ethylene-sensitive items like leafy greens and berries",
+			"img": "https://images.unsplash.com/photo-1577234286642-fc512a5f8f11",
+			"image_alt": "Citruses on a plate",
+			"featured": true
+		  },
+		  {
+			"id": 5,
+			"tips": "Place your meat and fresh fish on the bottom shelf",
+			"img": "https://images.unsplash.com/photo-1510130387422-82bed34b37e9",
+			"image_alt": "Fish on a plate"
+		  },
+		  {
+			"id": 6,
+			"tips": "Put your dairy products and deli products on the middle shelf",
+			"img": "https://images.unsplash.com/photo-1502333052765-1424f32cf5ca",
+			"image_alt": "Charcuterie plate"
+		  },
+		  {
+			"id": 7,
+			"title": "Tomatoes",
+			"tips": "If you have slightly underripe tomatoes from the farmers’ market or your garden that you want to eat over the course of a few days—store them at room temperature. Otherwise, store them in the refrigerator and let them come back to room temperature before serving",
+			"img": "https://images.unsplash.com/photo-1444731961956-751ed90465a5",
+			"image_alt": "Tomatoes",
+			"featured": true
+		  },
+		  {
+			"id": 8,
+			"tips": "As a general rule avoid storing sensitive items on the refrigerator door where temperatures are more likely to fluctuate",
+			"img": "https://images.unsplash.com/photo-1536353284924-9220c464e262",
+			"image_alt": "Opened fridge door in the dark"
+		  },
+		  {
+			"id": 9,
+			"tips": "Keep potatoes out of the sunlight and fridge in a cool, dark place",
+			"img": "https://images.unsplash.com/photo-1508313880080-c4bef0730395",
+			"image_alt": "Potatoes"
+		  },
+		  {
+			"id": 10,
+			"tips": "Refrigerate leftovers within two hours of cooking to prevent bacterial growth. Divide large portions into smaller containers to cool faster",
+			"img": "https://images.unsplash.com/photo-1562571708-527276a391ac",
+			"image_alt": "Meal prep storage in containers",
+			"featured": true
+		  }
+	]
 }

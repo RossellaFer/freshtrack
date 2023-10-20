@@ -5,15 +5,17 @@
 	"logout": "ログアウト",
 	"impact": "インパクト",
 	"impact_info": "私たちのアプリを利用することで、5.7kgのCO2を節約したことになります！",
-	"food": "Food donation",
-	"food_info": "Explore food banks or charities to donate your food. You can also donate money to help them.",
-	"sustainability": "Sustainability",
-	"sustainability_info": "By reducing food waste in households, we are not just saving money but also making a positive environmental difference.",
-	"community": "Community",
-	"community_info": "Join our community to share your experience and learn from others.",
+	"food": "食料寄付",
+	"food_info": "フードバンクや慈善団体を探し、食料を寄付する。また、お金を寄付することもできます。",
+	"sustainability": "サステナビリティ",
+	"sustainability_info": "家庭での食品廃棄を減らすことで、私たちはお金を節約するだけでなく、環境にも良い変化をもたらしている。",
+	"community": "コミュニティ",
+	"community_info": "私たちのコミュニティに参加して、あなたの経験を共有し、他の人から学びましょう。",
 	"signInButton": "サインイン",
 	"registerButton": "Register",
 	"NoAccountLink": "アカウントをお持ちでない場合は、サインアップ",
+	"discover": "ディスカバー",
+	"discoverInfo": "鮮度を保ち、食材の無駄を省く保存のコツ",
 	"joinMission": "食品廃棄物を減らすミッションに参加しよう！",
 	"sign_register": "Sign in or Register to start tracking your food",
 	"emailaddress": "メールアドレス",
@@ -29,5 +31,72 @@
 	"search3": "Let's cultivate a sustainable tomorrow together!",
 	"search4": "Your list is now empty",
 	"search5": "Tap the Write or Scan button to add food",
-	"productInstruct": "Click on each product to check specific details"
+	"productInstruct": "Click on each product to check specific details",
+	"tips": [
+		{
+			"id": 1,
+			"tips": "冷蔵庫の温度は常に4度前後が望ましい。",
+			"img": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5",
+			"image_alt": "クローズド冷蔵庫",
+			"featured": true
+		  },
+		  {
+			"id": 2,
+			"tips": "野菜や食材は下の引き出しに収納する",
+			"img": "https://images.unsplash.com/photo-1542838132-92c53300491e",
+			"image_alt": "スーパーの果物売り場"
+		  },
+		  {
+			"id": 3,
+			"tips": "調理済みですぐに食べられるものは、一番上の棚に保管する。",
+			"img": "https://images.unsplash.com/photo-1606859191214-25806e8e2423",
+			"image_alt": "調理済み製品"
+		  },
+		  {
+			"id": 4,
+			"tips": "特定の果物や野菜からはエチレンガスが発生し、近くの農産物の熟成を早めることがあります。リンゴやバナナのようなエチレンを発生するものと、葉物野菜やベリー類のようなエチレンに敏感なものを分けて保管する。",
+			"img": "https://images.unsplash.com/photo-1577234286642-fc512a5f8f11",
+			"image_alt": "柑橘類の盛り合わせ",
+			"featured": true
+		  },
+		  {
+			"id": 5,
+			"tips": "肉と鮮魚を一番下の棚に置く",
+			"img": "https://images.unsplash.com/photo-1510130387422-82bed34b37e9",
+			"image_alt": "皿の上の魚"
+		  },
+		  {
+			"id": 6,
+			"tips": "乳製品と惣菜を中段に置く",
+			"img": "https://images.unsplash.com/photo-1502333052765-1424f32cf5ca",
+			"image_alt": "シャルキュトリープレート"
+		  },
+		  {
+			"id": 7,
+			"title": "トマト",
+			"tips": "ファーマーズ・マーケットや家庭菜園で収穫したトマトが少し熟しておらず、数日かけて食べたい場合は、常温で保存する。そうでない場合は、冷蔵庫で保存し、室温に戻してからお召し上がりください。",
+			"img": "https://images.unsplash.com/photo-1444731961956-751ed90465a5",
+			"image_alt": "トマト",
+			"featured": true
+		  },
+		  {
+			"id": 8,
+			"tips": "一般的なルールとして、温度が変動しやすい冷蔵庫の扉の上にデリケートなものを保管するのは避ける。",
+			"img": "https://images.unsplash.com/photo-1536353284924-9220c464e262",
+			"image_alt": "暗闇で冷蔵庫のドアを開けた"
+		  },
+		  {
+			"id": 9,
+			"tips": "ジャガイモは日光を避け、冷蔵庫の冷暗所で保管する",
+			"img": "https://images.unsplash.com/photo-1508313880080-c4bef0730395",
+			"image_alt": "ジャガイモ"
+		  },
+		  {
+			"id": 10,
+			"tips": "残り物は細菌の繁殖を防ぐため、調理後2時間以内に冷蔵庫に入れる。大量に作った料理は、早く冷ますために小分けにする。",
+			"img": "https://images.unsplash.com/photo-1562571708-527276a391ac",
+			"image_alt": "コンテナで食事の準備をする",
+			"featured": true
+		  }
+	]
 }
