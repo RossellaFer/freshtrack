@@ -2,6 +2,7 @@
 	"freshtrack": "フレッシュトラック",
 	"profile": "プロフィール",
 	"button": "ボタン",
+	"login": "ログイン",
 	"logout": "ログアウト",
 	"impact": "インパクト",
 	"impact_info": "私たちのアプリを利用することで、5.7kgのCO2を節約したことになります！",
@@ -98,5 +99,11 @@
 			"image_alt": "コンテナで食事の準備をする",
 			"featured": true
 		  }
-	]
+	],
+	"menu": {
+		"settings": "設定",
+		"language": "言語",
+		"favourites": "お気に入り",
+		"logout": "ログアウト"
+	}
 }

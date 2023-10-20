@@ -2,6 +2,7 @@
 	"freshtrack": "Fresh Track",
 	"profile": "Profile",
 	"button": "Example button",
+	"login": "Login",
 	"logout": "Logout",
 	"impact": "Your impact",
 	"impact_info": "You have saved 5.7kg of CO2 by using our app!",
@@ -14,8 +15,6 @@
 	"signInButton": "Sign In",
 	"registerButton": "Register",
 	"NoAccountLink": "Don’t have an account? Sign Up",
-	"Discover": "Discover",
-	"DiscoverInfo": "Storage Tips to  maximise freshness & minimise food waste",
 	"joinMission": "Join the mission to reduce food waste!",
 	"sign_register": "Sign in or Register to start tracking your food",
 	"emailaddress": "Email Address",
@@ -32,6 +31,8 @@
 	"search4": "Your list is now empty",
 	"search5": "Tap the Write or Scan button to add food",
 	"productInstruct": "Click on each product to check specific details",
+	"discover": "Discover",
+	"discoverInfo": "Storage Tips to  maximise freshness & minimise food waste",
 	"tips": [
 		{
 			"id": 1,
@@ -98,5 +99,11 @@
 			"image_alt": "Meal prep storage in containers",
 			"featured": true
 		  }
-	]
+	],
+	"menu": {
+		"settings": "Settings",
+		"language": "Language",
+		"favourites": "Favourites",
+		"logout": "Logout"
+	}
 }

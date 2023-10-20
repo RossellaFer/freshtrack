@@ -92,7 +92,6 @@ const buttonStyles = StyleSheet.create({
 		marginTop: 20,
 	},
 	text: {
-	textDecoration: 'none',
 		color: '#fff',
 		fontWeight: '500',
 		lineHeight: 21,

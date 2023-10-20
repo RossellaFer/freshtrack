@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Language from '../components/Language';
 import { useAuth } from './useAuth';
 import { StyleSheet, Text } from 'react-native';
 import { Navigate } from 'react-router-dom';
@@ -97,7 +98,7 @@ export default function Login() {
 								flexDirection: 'column',
 								alignItems: 'center',
 							}}>
-							<Text style={styles.heading}>{t('freshtrack')}</Text>
+							<Text style={styles.heading}>{t('login')}</Text>
 							<Box
 								component='form'
 								onSubmit={handleSubmit}
@@ -148,6 +149,7 @@ export default function Login() {
 								</Grid>
 							</Box>
 						</Box>
+						<Language isProfilePage={false} />
 					</Container>
 				</ThemeProvider>
 			)}
