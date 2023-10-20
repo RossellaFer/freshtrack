@@ -31,10 +31,10 @@ const Navbar = () => {
 					showLabels={true}>
 					<BottomNavigationAction
 						label='Lists'
-						value='/lists'
+						value='/'
 						icon={<FormatListBulletedIcon />}
 						component={Link}
-						to='/lists'
+						to='/'
 					/>
 					<BottomNavigationAction
 						label='Impact'

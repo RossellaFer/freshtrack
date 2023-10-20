@@ -80,12 +80,12 @@ const styles = StyleSheet.create({
     paddingRight: "1rem",
   },
   title: {
-    fontSize: 22,
+    fontSize: 30,
     fontWeight: "bold",
     color: "#000",
-    marginTop: 30,
+    marginTop: 22,
     marginBottom: 20,
-    textAlign: "left",
+    textAlign: "center",
   },
   text: {
     fontSize: 16,

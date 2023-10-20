@@ -23,9 +23,9 @@ const RegisterSuccess = () => {
 			<Text style={styles.subheading}>{t('register_success')}</Text>
 			<Button
 				label='Get Started'
-				value='/lists'
+				value='/'
 				component={Link}
-				to='/lists'
+				to='/'
 				style={buttonStyles.rbutton}>
 				{t('getstarted')}
 			</Button>

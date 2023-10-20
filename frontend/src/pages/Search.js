@@ -235,7 +235,7 @@ const Search = () => {
 					<span>{t('search5')}</span>
 				</View>
 			)}
-
+			<View style={styles.buttonContainer}>
 			<ButtonGroup
 				style={styles.buttonGroup}
 				variant="contained"
@@ -264,6 +264,7 @@ const Search = () => {
 					Sort
 				</Button>
 			</ButtonGroup>
+			
 			<Sort
 				open={sortopen}
 				handleSortClose={handleSortClose}
@@ -272,6 +273,7 @@ const Search = () => {
 				open={cnopen}
 				handleCNClose={handleCNClose}
 			/>
+			</View>
 		</View>
 	);
 };
@@ -295,10 +297,10 @@ const styles = StyleSheet.create({
 	scrollView: {
 		margin: 20,
 		alignSelf: 'center',
+		marginBottom: 140,
 	},
 	contentContainer: {
 		flexGrow: 1,
-
 		alignItems: 'center',
 	},
 
@@ -330,10 +332,13 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: '1rem',
 	},
-	buttonGroup: {
+	buttonContainer: {
 		position: 'fixed',
-		bottom: '15vh',
-		zIndex: 1000,
+		bottom: '10px',
+		zIndex: 1,
+		padding: 20,
+		backgroundColor: 'rgba(255,255,255,0.2)',
+		backdropFilter: "blur(5px)"
 	},
 	image: {
 		width: '20vh',

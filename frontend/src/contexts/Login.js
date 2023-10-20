@@ -82,7 +82,7 @@ export default function Login() {
 		<>
 			{authed ? (
 				<Navigate
-					to='/lists'
+					to='/'
 					replace
 				/>
 			) : (

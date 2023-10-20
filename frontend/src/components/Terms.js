@@ -7,10 +7,12 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 
 export default function ResponsiveDialog(props) {
 	const theme = useTheme();
 	const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+	const { t } = useTranslation();
 
 	return (
 		<div>
@@ -23,29 +25,24 @@ export default function ResponsiveDialog(props) {
 				<DialogContent>
 					<DialogContentText>
 						<DialogContentText>
-							As we embark on our mission to combat food waste and save the
-							world, here are some terms and conditions:
+							{t('terms.term1')}
 						</DialogContentText>
 						<br />
 						<DialogContentText>
-							By using this app, you agree to spread the love for coding and
-							indulge in deliciously sustainable adventures.
+							{t('terms.term2')}
 						</DialogContentText>
 						<br />
 						<DialogContentText>
-							In the event of a coding emergency, don't panic. Take a deep
-							breath and have a bite of your favorite snack. It might not solve
-							the bug, but it will definitely make you feel better - we promise.
+						  {t('terms.term3')}
 						</DialogContentText>
 
 						<br />
 						<DialogContentText>
-							This was created for Women Who Code Hackathon by a team of five
-							talented ladies, scattered across the globe.
+						  {t('terms.term4')}
 						</DialogContentText>
 						<br />
 						<DialogContentText>
-							Happy coding and munching! 🍕👩‍💻
+						  {t('terms.term5')}
 						</DialogContentText>
 					</DialogContentText>
 				</DialogContent>

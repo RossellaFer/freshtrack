@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { View, StyleSheet } from "react-native";
 import { useAuth } from "../contexts/useAuth";
 import Logout from "../contexts/Logout";
-import Login from "../contexts/Login";
+import SignInOrRegister from "../pages/SignInOrRegister";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -77,7 +77,7 @@ const Profile = () => {
           </Box>
         </>
       ) : (
-        <Login />
+        <SignInOrRegister />
       )}
     </View>
   );

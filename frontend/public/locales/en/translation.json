@@ -1,9 +1,11 @@
 {
 	"freshtrack": "Fresh Track",
 	"profile": "Profile",
-	"button": "Example button",
-	"login": "Login",
+	"backButton": "Back",
+	"login": "Sign in",
 	"logout": "Logout",
+	"register": "Register",
+	"sign_readmore": "Read more about our project",
 	"impact": "Your impact",
 	"impact_info": "You have saved 5.7kg of CO2 by using our app!",
 	"food": "Food donation",
@@ -17,11 +19,24 @@
 	"NoAccountLink": "Don’t have an account? Sign Up",
 	"joinMission": "Join the mission to reduce food waste!",
 	"sign_register": "Sign in or Register to start tracking your food",
+	"confirmRegistration": "Confirm Registration",
 	"emailaddress": "Email Address",
 	"password": "Password",
 	"repeatpassword": "Repeat Password",
 	"termscond": "Read Terms & Conditions",
 	"termsagree": "I accept Terms & Conditions",
+	"terms": {
+		"term1": "As we embark on our mission to combat food waste and save the world, here are some terms and conditions:",
+		"term2": "By using this app, you agree to spread the love for coding and indulge in deliciously sustainable adventures.",
+		"term3": "In the event of a coding emergency, don't panic. Take a deep breath and have a bite of your favorite snack. It might not solve the bug, but it will definitely make you feel better - we promise.",
+		"term4": "This was created for Women Who Code Hackathon by a team of five talented ladies, scattered across the globe.",
+		"term5": "Happy coding and munching! 🍕👩‍💻"
+	},
+	"home": {
+		"intro1": "Every year, millions of tons of food are wasted globally, contributing to environmental degradation.",
+		"intro2": "FreshTrack aims to make a significant impact on this issue by empowering individuals to make informed decisions about their food consumption.",
+		"intro3": "By reducing food waste in households, we are not just saving money but also making a positive environmental difference."
+	},
 	"haveAccountLink": "Already have an account? Sign in",
 	"getstarted": "Get Started",
 	"register_success": "YOUR REGISTRATION WAS SUCCESSFUL!!",

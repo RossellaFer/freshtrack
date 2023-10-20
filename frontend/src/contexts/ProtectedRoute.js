@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children }) => {
 		children
 	) : (
 		<Navigate
-			to='/home'
+			to='/signInOrRegister'
 			replace
 		/>
 	);

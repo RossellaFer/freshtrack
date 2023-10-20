@@ -14,6 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Terms from '../components/Terms';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from './useAuth';
+import Language from '../components/Language';
 
 const defaultTheme = createTheme();
 
@@ -40,7 +41,7 @@ export default function Register() {
 	}
 
 	function handleEmailChange(event) {
-		var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+		var reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w\w+)+$/;
 		if (reg.test(event.target.value) === true) {
 			//valid email
 			setCheckEmail(false);
@@ -129,7 +130,7 @@ export default function Register() {
 								flexDirection: 'column',
 								alignItems: 'center',
 							}}>
-							<Text style={styles.heading}>{t('freshtrack')}</Text>
+							<Text style={styles.heading}>{t('register')}</Text>
 							<Box
 								component='form'
 								noValidate
@@ -213,13 +214,13 @@ export default function Register() {
 									fullWidth
 									variant='contained'
 									sx={{ mt: 3, mb: 2, backgroundColor: 'var(--accent-1)' }}>
-									Register
+									{t("confirmRegistration")}
 								</Button>
 								<Grid
 									container
 									justifyContent='flex-end'>
 									<Grid item>
-										<Link
+										<Link style={{ textAlign: 'center' }}
 											href='/login'
 											variant='body2'>
 											{t('haveAccountLink')}
@@ -234,6 +235,7 @@ export default function Register() {
 						open={termsOpen}
 						handleCloseTerms={handleCloseTerms}
 					/>
+					<Language isProfilePage={false} />
 				</ThemeProvider>
 			)}
 		</>
@@ -245,7 +247,7 @@ const styles = StyleSheet.create({
 		fontSize: 40,
 		fontWeight: 'bold',
 		color: 'var(--basic)',
-		marginBottom: 60,
+		marginBottom: 40,
 		textAlign: 'center',
 	},
 	resultText: {
