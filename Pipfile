@@ -9,6 +9,8 @@ psycopg2-binary = "*"
 django-environ = "*"
 requests = "*"
 django-enumfields = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
