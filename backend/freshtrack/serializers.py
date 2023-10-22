@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Food
+from .models import Food, FreshtrackUser
 
 
 class FoodSerializer(serializers.ModelSerializer):
@@ -66,3 +66,16 @@ class FoodSerializer(serializers.ModelSerializer):
 
     def format_metric(self, metric):
         return metric.value if metric else None
+
+class FreshtrackUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=FreshtrackUser
+        fields='__all__'
+
+    def create(self, validated_data):
+        user = FreshtrackUser.objects.create_user(
+            username=validated_data.get('username', None),
+            email=validated_data.get('email', None),
+            password=validated_data.get('password', None),
+        )
+        return user

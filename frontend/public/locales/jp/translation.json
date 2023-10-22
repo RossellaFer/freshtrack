@@ -48,6 +48,14 @@
 	"search4": "リストが空になりました",
 	"search5": "食品を追加するには、書き込みまたはスキャンボタンをタップします。",
 	"productInstruct": "各商品をクリックすると詳細が表示されます。",
+	"productDetails": {
+		"storageTips": "Storage tips",
+		"expiryDate": "Expires in ",
+		"pantryTips": "Pantry",
+		"freezerTips": "Freezer",
+		"fridgeTips": "Fridge",
+		"close": "Close"
+	},
 	"tips": [
 		{
 			"id": 1,

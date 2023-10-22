@@ -25,7 +25,7 @@ const SignInOrRegister = () => {
           label="Sign In"
           value="/login"
           component={Link}
-          to="/login"
+          href="/login"
           style={buttonStyles.sbutton}
         >
           {t("signInButton")}
@@ -34,7 +34,7 @@ const SignInOrRegister = () => {
           label="Register"
           value="/register"
           component={Link}
-          to="/register"
+          href="/register"
           style={buttonStyles.rbutton}
         >
           {t("registerButton")}

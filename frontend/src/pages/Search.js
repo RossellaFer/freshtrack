@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { API_URL } from '../constants';
 import {
 	Pressable,
 	StyleSheet,
@@ -11,6 +13,7 @@ import {
 	Image,
 } from 'react-native';
 import FoodCard from '../components/FoodCard';
+import FoodCardFridge from '../components/FoodCardFridge';
 import Sort from '../components/Sort';
 import { freezer, fridge, pantry } from '../data/foodsavertest.js';
 import IconButton from '@mui/material/IconButton';
@@ -62,7 +65,12 @@ const Search = () => {
 	}, []);
 
 	const fetchInitialData = async (userdata) => {
-		setResultFridge(fridge);
+		//TODO to be changed with individual user list
+		const results = await axios.get(API_URL).then(res => {
+			//TODO change this to all results
+			return res.data.slice(0, 10);
+		});
+		setResultFridge(results);
 		setResultPantry(pantry);
 		setResultFreezer(freezer);
 
@@ -171,11 +179,11 @@ const Search = () => {
 						{resultFridge.length > 0 && vis.fridge ? (
 							<>
 								<span style={styles.group}>
-									<KitchenIcon /> Fridge
+									<KitchenIcon /> {t('productDetails.fridge')}
 								</span>
 								{resultFridge.map((item, i) => (
-									<FoodCard
-										key={item.id}
+									<FoodCardFridge
+										key={item.external_id}
 										item={item}
 										type="current"
 										location="fridge"
@@ -189,7 +197,7 @@ const Search = () => {
 						{resultPantry.length > 0 && vis.pantry ? (
 							<>
 								<span style={styles.group}>
-									<StorefrontRoundedIcon /> Pantry
+									<StorefrontRoundedIcon /> {t('productDetails.pantry')}
 								</span>
 								{resultPantry.map((item, i) => (
 									<FoodCard
@@ -206,7 +214,7 @@ const Search = () => {
 						{resultFreezer.length && vis.freezer > 0 ? (
 							<>
 								<span style={styles.group}>
-									<AcUnitIcon /> Freezer
+									<AcUnitIcon /> {t('productDetails.freezer')}
 								</span>
 								{resultFreezer.map((item, i) => (
 									<FoodCard
