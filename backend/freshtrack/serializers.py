@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from .models import Food
+from .models import Food, FreshtrackUser
+from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model, authenticate
 
 
 class FoodSerializer(serializers.ModelSerializer):
@@ -67,7 +69,30 @@ class FoodSerializer(serializers.ModelSerializer):
     def format_metric(self, metric):
         return metric.value if metric else None
 
-    # TODO: create the create endpoint
+class FreshtrackUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=FreshtrackUser
+        fields='__all__'
 
     def create(self, validated_data):
-        return Food.objects.create(**validated_data)
+        user = FreshtrackUser.objects.create_user(
+            username=validated_data.get('username', None),
+            email=validated_data.get('email', None),
+            password=validated_data.get('password', None),
+        )
+        return user
+
+class FreshtrackUserLoginSerializer(serializers.ModelSerializer): 
+    class Meta:
+        model=FreshtrackUser
+        fields='__all__'
+    email = serializers.EmailField()
+    password = serializers.CharField()
+    username= serializers.CharField()
+
+    def check_user(self, clean_data):
+        user = authenticate(username=clean_data['email'], password=clean_data['password'])
+        print (user)
+        if not user:
+            raise ValidationError('user not found')
+        return user
