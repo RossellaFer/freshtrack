@@ -5,7 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
 from .serializers import FoodSerializer
-from .models import Food
+from .models import Food, FoodCategory
 from .enums import Metric
 
 
