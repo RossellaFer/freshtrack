@@ -66,3 +66,8 @@ class FoodSerializer(serializers.ModelSerializer):
 
     def format_metric(self, metric):
         return metric.value if metric else None
+
+    # TODO: create the create endpoint
+
+    def create(self, validated_data):
+        return Food.objects.create(**validated_data)

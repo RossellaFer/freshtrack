@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'freshtrack',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,10 @@ DATABASES ={
         'USER': env('DATABASE_USER'), 
         'PASSWORD': env('DATABASE_PASSWORD'),
     }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 

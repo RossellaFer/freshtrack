@@ -46,6 +46,14 @@
 	"search4": "Your list is now empty",
 	"search5": "Tap the Write or Scan button to add food",
 	"productInstruct": "Click on each product to check specific details",
+	"productDetails": {
+		"storageTips": "Storage tips",
+		"expiryDate": "Expires in ",
+		"pantry": "Pantry",
+		"freezer": "Freezer",
+		"fridge": "Fridge",
+		"close": "Close"
+	},
 	"discover": "Discover",
 	"discoverInfo": "Storage Tips to  maximise freshness & minimise food waste",
 	"tips": [
