@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from rest_framework import viewsets
 
 from .serializers import FoodSerializer
-from .models import Food
+from .models import Food, FoodCategory
 from .enums import Metric
 
 
