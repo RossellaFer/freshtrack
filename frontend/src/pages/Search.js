@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../constants';
 import {
-	Pressable,
 	StyleSheet,
 	View,
-	TextInput,
 	ScrollView,
 	Dimensions,
 	StatusBar,
@@ -16,8 +14,6 @@ import FoodCard from '../components/FoodCard';
 import FoodCardFridge from '../components/FoodCardFridge';
 import Sort from '../components/Sort';
 import { freezer, fridge, pantry } from '../data/foodsavertest.js';
-import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -26,11 +22,6 @@ import DocumentScannerOutlinedIcon from '@mui/icons-material/DocumentScannerOutl
 import SortOutlinedIcon from '@mui/icons-material/SortOutlined';
 import CreateNew from '../pages/CreateNew';
 import { useTranslation } from 'react-i18next';
-
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-
-import Select from '@mui/material/Select';
 import { useAuth } from '../contexts/useAuth';
 import { useEffect } from 'react';
 import { Picker } from 'react-native-web';

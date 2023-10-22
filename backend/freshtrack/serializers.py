@@ -86,13 +86,11 @@ class FreshtrackUserLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model=FreshtrackUser
         fields='__all__'
-    email = serializers.EmailField()
-    password = serializers.CharField()
-    username= serializers.CharField()
+    username=serializers.CharField()
+    email=serializers.EmailField()
+    password=serializers.CharField()
 
     def check_user(self, clean_data):
         user = authenticate(username=clean_data['email'], password=clean_data['password'])
         print (user)
-        if not user:
-            raise ValidationError('user not found')
         return user

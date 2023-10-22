@@ -1,4 +1,13 @@
 import React, { useState, createContext, useContext, useEffect } from 'react';
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
+axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+axios.defaults.xsrfCookieName = 'csrftoken';
+
+const client = axios.create({
+	baseURL: 'http://127.0.0.1:3000',
+});
 
 // Create the context
 const AuthContext = createContext(null);
@@ -17,22 +26,6 @@ export const AuthProvider = ({ children }) => {
 	console.log('authed: ' + authed);
 	useEffect(() => {
 		if (!authed) {
-			fakeAsyncLoginCheck().then((activeUser) => {
-				if (activeUser) {
-					console.log('fake async login check called');
-					setUser({
-						id: '1234',
-						points: 50,
-						language: '1',
-					});
-
-					setAuthed(true);
-					setLoading(false);
-				} else {
-					setLoading(false);
-					emptyUser();
-				}
-			});
 		}
 	}, []);
 
@@ -45,25 +38,24 @@ export const AuthProvider = ({ children }) => {
 	}
 
 	const createUser = async (creds) => {
-		const result = await fakeAsyncCreateUser(creds);
+		    console.log(creds)
+			client.post('/register', creds).then((res) => {
+				client.post('/login', creds).then((res) => {
+					console.log('user has logged in');
+					setAuthed(true);
+				});
+			});
 
-		if (result) {
-			console.log('user has been created');
-			//TODO: DO WE NEED TO LOG THEM IN HERE?
-			setAuthed(true);
-			// sessionStorage.setItem("loggedIn", "true");
-		}
+		sessionStorage.setItem("user", JSON.stringify(user));
 	};
 
 	const login = async (creds) => {
-		const result = await fakeAsyncLogin(creds);
-
-		if (result) {
-			console.log('user has logged in');
-
+		client.post(
+			"/api/login",
+			creds
+		  ).then(function(res) {
 			setAuthed(true);
-			// sessionStorage.setItem("loggedIn", "true");
-		}
+		  });
 	};
 
 	const logout = async () => {

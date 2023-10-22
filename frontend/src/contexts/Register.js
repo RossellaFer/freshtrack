@@ -33,11 +33,11 @@ export default function Register() {
 		email: '',
 		password: '',
 		repeatpassword: '',
+		username: '',
 	});
-	console.log('pass1: ' + credentials.password);
-	console.log('pass2: ' + credentials.repeatpassword);
+
 	function resetCredentials() {
-		setCredentials({ email: '', password: '' });
+		setCredentials({ email: '', password: '', username: '' });
 	}
 
 	function handleEmailChange(event) {
@@ -79,11 +79,14 @@ export default function Register() {
 		setResult('');
 
 		const data = new FormData(event.currentTarget);
+		console.log(data)
 
 		let passCheck = checkPasswords();
 
+
 		if (
 			credentials.repeatpassword !== '' &&
+			credentials.username !== '' &&
 			credentials.password !== '' &&
 			credentials.email !== '' &&
 			passCheck === false
@@ -93,6 +96,7 @@ export default function Register() {
 					{
 						email: data.get('email'),
 						password: data.get('password'),
+						username: data.get('username')
 					}
 			);
 
@@ -151,6 +155,18 @@ export default function Register() {
 											autoComplete='email'
 											error={checkEmail}
 											onChange={handleEmailChange}
+										/>
+									</Grid>
+									<Grid
+										item
+										xs={12}>
+										<TextField
+											required
+											fullWidth
+											id='username'
+											label={t('username')}
+											name='username'
+											onChange={setCredentialsChange}
 										/>
 									</Grid>
 									<Grid

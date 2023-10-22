@@ -9,6 +9,7 @@ from rest_framework import permissions, status, viewsets
 from rest_framework.views import APIView
 from .validations import custom_validation
 from rest_framework.authentication import SessionAuthentication
+from django.contrib.auth import login
 
 from .serializers import FoodSerializer, FreshtrackUserSerializer, FreshtrackUserLoginSerializer
 from .models import Food
@@ -56,10 +57,11 @@ class FreshTrackUserLogin(APIView):
     authentication_classes = (SessionAuthentication,)
 
     def post(self, request):
-        clean_data = custom_validation(request.data)
-        serializer = FreshtrackUserLoginSerializer(data=clean_data)
+        data = request.data
+        serializer = FreshtrackUserLoginSerializer(data=data)
         if serializer.is_valid(raise_exception=True):
-            user = serializer.check_user(clean_data)
+            print ( data )
+            user = serializer.check_user(data)
             login(request, user)
 
             return Response(serializer.data, status=status.HTTP_200_OK)

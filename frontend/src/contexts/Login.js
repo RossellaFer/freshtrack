@@ -28,10 +28,11 @@ export default function Login() {
 	const [credentials, setCredentials] = useState({
 		email: '',
 		password: '',
+		username: '',
 	});
 
 	function resetCredentials() {
-		setCredentials({ email: '', password: '' });
+		setCredentials({ email: '', password: '', username: '' });
 	}
 
 	function handleEmailChange(event) {
@@ -69,6 +70,7 @@ export default function Login() {
 		if (
 			credentials.password !== '' &&
 			credentials.email !== '' &&
+			credentials.username !== '' &&
 			checkEmail === false
 		) {
 			login(credentials);
@@ -127,6 +129,18 @@ export default function Login() {
 									id='password'
 									onChange={setCredentialsChange}
 									autoComplete='current-password'
+								/>
+								<TextField
+									margin='normal'
+									required
+									fullWidth
+									id='username'
+									label={t('username')}
+									name='username'
+									type='text'
+									onChange={setCredentialsChange}
+									autoComplete='username'
+									autoFocus
 								/>
 
 								<Text style={styles.resultText}>{result}</Text>
