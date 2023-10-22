@@ -26,4 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/metric-options/', views.metric_options, name='metric-options'),
+    path('register', views.FreshtrackUserRegister.as_view(), name='register'),
 ]

@@ -1,7 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from enumfields import EnumField
 
-from .enums import Metric
+from .enums import Metric, Language
 
 
 class FoodCategory(models.Model):
@@ -11,6 +12,8 @@ class FoodCategory(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        db_table = 'food_categories'
 
 class Food(models.Model):
     name = models.CharField(max_length=250, unique=True)
@@ -60,3 +63,13 @@ class Food(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        db_table = 'food'
+
+class FreshtrackUser(AbstractUser):
+    points = models.IntegerField(default=0)
+    language = EnumField(Language, max_length=30, default=Language.ENGLISH)
+
+    class Meta:
+        db_table = 'freshtrack_users'
