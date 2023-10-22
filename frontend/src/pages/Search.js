@@ -68,7 +68,7 @@ const Search = () => {
 		//TODO to be changed with individual user list
 		const results = await axios.get(API_URL).then(res => {
 			//TODO change this to all results
-			return res.data.slice(0, 1);
+			return res.data.slice(0, 10);
 		});
 		setResultFridge(results);
 		setResultPantry(pantry);
