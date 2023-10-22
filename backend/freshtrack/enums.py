@@ -12,3 +12,6 @@ class Metric(Enum):
     WHEN_RIPE = 'WHEN_RIPE'
     NOT_RECOMMENDED = 'NOT_RECOMMENDED'
 
+class Language(Enum):
+    ENGLISH = 'ENGLISH'
+    JAPANESE = 'JAPANESE'
