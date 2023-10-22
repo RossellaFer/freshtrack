@@ -7,3 +7,4 @@ from .models import Food
 class FoodView(viewsets.ModelViewSet):
     serializer_class = FoodSerializer
     queryset = Food.objects.all()
+    filterset_fields = ['name', 'keywords']
