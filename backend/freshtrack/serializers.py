@@ -3,7 +3,7 @@ from .models import Food, FreshtrackUser
 
 
 class FoodSerializer(serializers.ModelSerializer):
-    category_name = serializers.CharField(source='category.name')
+    category_name = serializers.CharField(source='category.name', read_only=True)
     pantry_metric = serializers.SerializerMethodField()
     pantry_after_opening_metric = serializers.SerializerMethodField()
     refrigerate_metric = serializers.SerializerMethodField()
