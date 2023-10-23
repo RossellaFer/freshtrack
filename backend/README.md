@@ -61,3 +61,6 @@ python manage.py runserver
 Navigate to `http://127.0.0.1:8000/admin`. Use the credentials you entered to create a superuser in order to access the admin site. 
 
 At this point, you should be all set on the backend!
+
+<img width="958" alt="Screenshot 2023-10-22 at 9 09 00 PM" src="https://github.com/RossellaFer/freshtrack/assets/47619770/db389656-835c-42c9-9f50-bfdbe6240986">
+
