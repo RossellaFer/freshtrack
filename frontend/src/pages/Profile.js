@@ -21,7 +21,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 
 const Profile = () => {
   const [open, setOpen] = useState(true);
-  const { authed, loading } = useAuth();
+  const { authed } = useAuth();
   const { t } = useTranslation();
 
   const handleClick = () => {

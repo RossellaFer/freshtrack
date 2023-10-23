@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL } from "../constants";
-import { Link } from "react-router-dom";
-import { View, StyleSheet, TextInput, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputAdornment from "@mui/material/InputAdornment";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
@@ -20,14 +18,9 @@ import ClearIcon from "@mui/icons-material/Clear";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import KitchenIcon from "@mui/icons-material/Kitchen";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
-import CategoryIcon from "@mui/icons-material/Category";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import AddIcon from "@mui/icons-material/Add";
 import Dialog from "@mui/material/Dialog";
-import HomeIcon from "@mui/icons-material/Home";
 import Slide from "@mui/material/Slide";
-import { Input } from "@mui/material";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -77,41 +70,41 @@ const CreateNew = (props) => {
 
   const handleExpiryDateChange = (event) => {
     setExpiryDate(event.target.value);
-	//compare the expiry date to the current date and return the value in days
-	const date1 = new Date(event.target.value);
-	const date2 = new Date();
-	const diffTime = Math.abs(date2 - date1);
-	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    //compare the expiry date to the current date and return the value in days
+    const date1 = new Date(event.target.value);
+    const date2 = new Date();
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
 
     setFoodForm((prevFoodData) => {
-    	return {
-    		...prevFoodData,
-			refrigerate_min: diffDays,
-			refrigerate_max: 0,
-			refrigerate_metric: 'DAYS',
-			pantry_min: diffDays,
-			pantry_max: 0,
-			pantry_metric: 'DAYS',
-    	};
+      return {
+        ...prevFoodData,
+        refrigerate_min: diffDays,
+        refrigerate_max: 0,
+        refrigerate_metric: 'DAYS',
+        pantry_min: diffDays,
+        pantry_max: 0,
+        pantry_metric: 'DAYS',
+      };
     });
   };
 
   const handleFreezerExpiryDateChange = (event) => {
     setExpiryDateFreezer(event.target.value);
-	//compare the expiry date to the current date and return the value in days
-	const date1 = new Date(event.target.value);
-	const date2 = new Date();
-	const diffTime = Math.abs(date2 - date1);
-	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    //compare the expiry date to the current date and return the value in days
+    const date1 = new Date(event.target.value);
+    const date2 = new Date();
+    const diffTime = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
 
     setFoodForm((prevFoodData) => {
-    	return {
-    		...prevFoodData,
-			freezer_min: diffDays,
-			freezer_metric: 'DAYS',
-    	};
+      return {
+        ...prevFoodData,
+        freezer_min: diffDays,
+        freezer_metric: 'DAYS',
+      };
     });
   };
 
@@ -120,14 +113,18 @@ const CreateNew = (props) => {
       return undefined;
     }
 
+
     (async () => {
       axios.get(`${API_URL}`).then((res) => {
         setDatabaseFood(res.data);
-		// get the unique categories
-		const categories = [...new Set(res.data.map(item => item.category_name))];
-		setUniqueCategories(categories);
+        // get the unique categories
+        const categories = [...new Set(res.data.map(item => item.category_name))];
+        setUniqueCategories(categories);
       });
     })();
+
+
+
   }, [loading]);
 
   useEffect(() => {
@@ -173,10 +170,10 @@ const CreateNew = (props) => {
             ...prevFoodData,
             name: selectedFood.name,
             created_at: new Date(),
-			expired: false,
-			consumed: false,
-			quantity: 1,
-			external_id: null,
+            expired: false,
+            consumed: false,
+            quantity: 1,
+            external_id: null,
           };
         });
       }
@@ -286,65 +283,65 @@ const CreateNew = (props) => {
           {showExtraFields ? (
             <>
               <View style={styles.customFieldsContent}>
-              <Text style={styles.heading}>Select a custom expiry</Text>
+                <Text style={styles.heading}>Select a custom expiry</Text>
                 <FormControl variant="standard">
                   <TextField
                     value={expiryDate}
-					label="Expiry date"
-					pattern="[0-9]{4}"
+                    label="Expiry date"
+                    pattern="[0-9]{4}"
                     onChange={handleExpiryDateChange}
                     type="date"
-					max={ "9999-12-31" }
+                    max={"9999-12-31"}
                     id="expiry-date-input"
-					InputProps={{
-						startAdornment: (
-						  <InputAdornment position="end">
-							<CalendarMonthIcon edge="end"/>
-						  </InputAdornment>
-						),
-					  }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="end">
+                          <CalendarMonthIcon edge="end" />
+                        </InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
-				<FormControl variant="standard" style={{marginTop: "1em"}}>
+                <FormControl variant="standard" style={{ marginTop: "1em" }}>
                   <TextField
                     value={expiryDateFreezer}
-					label="Expiry date (freezer)"
+                    label="Expiry date (freezer)"
                     onChange={handleFreezerExpiryDateChange}
                     type="date"
                     id="expiry-date-freezer-input"
-					InputProps={{
-						startAdornment: (
-						  <InputAdornment position="end">
-							<CalendarMonthIcon edge="end"/>
-						  </InputAdornment>
-						),
-					  }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="end">
+                          <CalendarMonthIcon edge="end" />
+                        </InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </View>
-			  <View style={styles.customFieldsContent}>
-              <Text style={styles.heading}>Additional details</Text>
-              <Select
-                id="outlined-basic"
-                label="Category"
-                variant="outlined"
-                value={foodForm.category_name}
-                onChange={(e) =>
-                  setFoodForm((prevFoodData) => {
-                    return {
-                      ...prevFoodData,
-                      category_name: e.target.value,
-					  external_id: null,
-                    };
-                  })
-				 }
-				 >
-				  {uniqueCategories.map((category) => (
-					<MenuItem key={category} value={category}>{category}</MenuItem>
-				  ))}
-					
-				 </Select>
-			  </View>
+              <View style={styles.customFieldsContent}>
+                <Text style={styles.heading}>Additional details</Text>
+                <Select
+                  id="outlined-basic"
+                  label="Category"
+                  variant="outlined"
+                  value={foodForm.category_name}
+                  onChange={(e) =>
+                    setFoodForm((prevFoodData) => {
+                      return {
+                        ...prevFoodData,
+                        category_name: e.target.value,
+                        external_id: null,
+                      };
+                    })
+                  }
+                >
+                  {uniqueCategories.map((category) => (
+                    <MenuItem key={category} value={category}>{category}</MenuItem>
+                  ))}
+
+                </Select>
+              </View>
             </>
           ) : (
             <></>
@@ -370,7 +367,7 @@ const CreateNew = (props) => {
           <Button
             style={styles.addbutton}
             variant="contained"
-			type="submit"
+            type="submit"
           >
             <AddIcon /> Add Item
           </Button>
@@ -434,7 +431,7 @@ const styles = StyleSheet.create({
     marginBottom: "1rem",
     marginLeft: "auto",
     marginRight: "auto",
-	"textAlign": "center",
+    "textAlign": "center",
   },
   input: {
     fontSize: "2rem",
@@ -454,10 +451,10 @@ const styles = StyleSheet.create({
     marginBottom: "1rem",
   },
   customFieldsContent: {
-	marginTop: "1rem",
+    marginTop: "1rem",
     marginBottom: "1rem",
-	display: "flex",
-	flexDirection: "column",
+    display: "flex",
+    flexDirection: "column",
   }
 });
 export default CreateNew;

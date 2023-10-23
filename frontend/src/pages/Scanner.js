@@ -3,7 +3,7 @@ import '../styles/scanner.css';
 import Html5QrcodePlugin from '../components/scanner/Html5QrcodePlugin';
 import ResultContainerPlugin from '../components/scanner/ResultContainerPlugin';
 import { Html5QrcodeScanner } from 'html5-qrcode';
-import { View, SafeAreaView, StyleSheet } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';

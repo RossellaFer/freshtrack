@@ -49,12 +49,12 @@
 	"search5": "食品を追加するには、書き込みまたはスキャンボタンをタップします。",
 	"productInstruct": "各商品をクリックすると詳細が表示されます。",
 	"productDetails": {
-		"storageTips": "Storage tips",
-		"expiryDate": "Expires in ",
-		"pantryTips": "Pantry",
-		"freezerTips": "Freezer",
-		"fridgeTips": "Fridge",
-		"close": "Close"
+		"storageTips": "保管のヒント",
+		"expiryDate": "期間満了 ",
+		"pantryTips": "しょくりょうだな",
+		"freezerTips": "冷凍庫",
+		"fridgeTips": "冷却装置",
+		"close": "閉じる"
 	},
 	"tips": [
 		{
