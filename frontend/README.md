@@ -1,14 +1,26 @@
-# Getting Started with Create React App
+# Fresh Track
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi, welcome to FreshTrack, a team project for the Women Who Code 2023 Hackathon for Social Good!
+This project was bootstrapped using Create React App, and it uses React Native for Web, Django/Python and PostgreSQL.
 
-After cloning the repository, you can run the following commands to get started:
+## Challenge Statement
 
-```
-cd frontend
+Every year, millions of tons of food are wasted globally, contributing to environmental degradation. FreshTrack aims to make a significant impact on this issue by empowering individuals to make informed decisions about their food consumption. By reducing food waste in households, we are not just saving money but also making a positive environmental difference.
 
-npm install
-```
+## Running the app
+
+Since the app is not currently hosted anywhere, you will need to run the frontend and the backend locally.  
+
+For the front end, follow these steps:
+
+• clone the repository locally
+• `cd frontend` to change directory to frontend
+• run `npm install` to install the necessary modules
+• run `npm start` to start the app
+
+At the moment, you can login by entering a random email and password. The authorization flow is still a work in progress so React is managing the authentication using state. 
+
+
 
 ## Available Scripts
 
