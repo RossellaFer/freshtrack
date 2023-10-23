@@ -7,7 +7,7 @@ from rest_framework import permissions, status, viewsets
 from rest_framework.views import APIView
 
 from .serializers import FoodSerializer, FreshtrackUserSerializer
-from .models import Food
+from .models import Food, FoodCategory
 from .enums import Metric
 
 

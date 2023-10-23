@@ -4,34 +4,63 @@ Before getting started, ensure you have the following installed on your system:
 
 - [Python](https://www.python.org/downloads/)
 - [Pipenv](https://pipenv.pypa.io/en/latest/)
-- [Postgresql] (https://www.postgresql.org/download/)
+- [Postgresql](https://www.postgresql.org/download/)
 
 ## Instructions
-Initialize virtual environment by typing `pipenv shell`.
-Once the virtual environment is created, install dependencies using `pipenv install`
 
-Verify that server is running by typing `python manage.py runserver`
+**Note**: These are instructions to set up the backend of this application.
 
-Set the env variables:
-Use the template from `dev.env` file and create your local `env` file within the `backend` folder (where `dev.env` file is located).
-Update the variables to your local Postgresql credentials:
+1. After cloning the repository, navigate to the `backend` folder and initialize your virtual environment by typing `pipenv shell` on your command line.
 
+You might need to specify the Python version you have installed on your computer by:
+```
+python --version (get the version of your installed Python)
+pipenv --python x.x.xx (replace x with your version)
+```
+
+2. Set the env variables: Use the template from `dev.env` file and create your local `.env` file within the `backend` folder (same level as the `settings.py` file). Update the variables to match your local PostgreSQL credentials:
+
+``````
 DATABASE_NAME= # name of your local db
 DATABASE_USER= # name of your postgres user
 DATABASE_PASSWORD = # password that pgadmin asks you to create when you create your local db
+``````
 
-Once the postgres is locally set up, run the initial migration for your database.
+3. Install the dependencies listed in our Pipfile by typing:
 
-Once you are in your virtual environment (`pipenv shell`), run:
-`python manage.py migrate`
+```
+pipenv install
+```
 
-This will create the default Django models, such as the `User` model. Check in pgAdmin that these tables are created within the local db you specified.
-This will also create our `Food` and `FoodCategory` models.
+4. Migrate models by running:
 
-Now, you can run the management command script to seed the initial `Food` and `FoodCategory` objects.
-In order to do so, run:
-`python manage.py seed_food_data`
+```
+python manage.py migrate
+```
 
-Note: There will be a few failures due to duplicates and erroneous data in the public API. 
 
-Navigate to `http://127.0.0.1:8000/api/food`to verify that the new `Food` list is displaying.
+4. We have created a management command script to seed data from a [public API](https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json). Run this seed command by typing:
+
+```
+python manage.py seed_food_data
+```
+
+**Note** Some iterations will fail due to inconsistency in the public API JSON data.
+
+5. Create a superuser in by typing:
+```
+python manage.py createsuperuser
+```
+Follow the commands in your terminal. This will create a superuser in Django which gives you access to the backend admin site.
+
+6. Run the server by typing:
+```
+python manage.py runserver
+```
+
+Navigate to `http://127.0.0.1:8000/admin`. Use the credentials you entered to create a superuser in order to access the admin site. 
+
+At this point, you should be all set on the backend!
+
+<img width="958" alt="Screenshot 2023-10-22 at 9 09 00 PM" src="https://github.com/RossellaFer/freshtrack/assets/47619770/db389656-835c-42c9-9f50-bfdbe6240986">
+
