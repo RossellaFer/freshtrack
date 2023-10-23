@@ -1,5 +1,6 @@
 # freshtrack
 Women Who Code 2023 Hackathon
 
-Frontend
+[Frontend](frontend/README.md)
+
 [Backend](backend/README.md)
